@@ -1,0 +1,32 @@
+<template id="portfolio-entry">
+    <h1>
+        <slot name="title"></slot>
+    </h1>
+    <h2>
+        <slot name="client"></slot>
+    </h2>
+    <h3>
+        <slot name="role"></slot>
+    </h3>
+    <div class="portfolio-entry-stacks">
+        <slot name="stacks"></slot>
+    </div>
+    <p class="portfolio-entry-desc">
+        <slot name="portfolio-entry-desc"></slot>
+    </p>
+    <div class="portfolio-entry-challenges">
+        <h4>The challenges</h4>
+        <ul>
+        </ul>
+    </div>
+    <div class="portfolio-entry-solutions">
+        <h4>The solutions</h4>
+        <ul>
+        </ul>
+    </div>
+    <div class="portfolio-entry-references">
+        <h4>References</h4>
+        <ul>
+        </ul>
+    </div>
+</template>

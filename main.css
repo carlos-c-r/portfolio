@@ -1,0 +1,128 @@
+#history-gradient {
+    width: 10px;
+    background: linear-gradient(0deg, red, green);
+}
+
+#blah {
+    display: flex;
+    flex-direction: row;
+}
+
+#history-content {}
+
+.history-job {
+    margin-left: 20px;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: "Roboto", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    scroll-behavior: smooth;
+    overflow: auto;
+    scroll-snap-type: y mandatory;
+
+}
+
+.section {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    scroll-snap-align: start;
+    overflow: scroll;
+}
+
+#filters {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 2px;
+    padding: 8px;
+}
+
+.section:nth-child(1) {
+    background: url(https://cdn.pixabay.com/photo/2014/09/05/18/32/old-books-436498_960_720.jpg);
+}
+
+.section:nth-child(2) {
+    background: url(https://cdn.pixabay.com/photo/2015/06/02/12/59/narrative-794978_960_720.jpg);
+}
+
+.section:nth-child(3) {
+    background: url(https://cdn.pixabay.com/photo/2016/09/08/22/43/books-1655783_960_720.jpg);
+}
+
+.section:nth-child(3) {
+    background: url(https://cdn.pixabay.com/photo/2015/12/19/20/32/paper-1100254_960_720.jpg);
+}
+
+.section:nth-child(4) {
+    background: url(https://cdn.pixabay.com/photo/2016/03/26/22/21/books-1281581_960_720.jpg);
+}
+
+.section:nth-child(5) {
+    background: url(https://cdn.pixabay.com/photo/2014/05/03/00/46/notebook-336634_960_720.jpg);
+}
+
+.portfolio-entry.hidden {
+    display: none;
+}
+
+.portfolio-entry {
+    background-size: cover;
+
+    h1 {
+        text-align: center;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    h3 {
+        text-align: center;
+    }
+
+    .portfolio-entry-stacks {
+        display: flex;
+        gap: 2px;
+        flex-wrap: wrap;
+    }
+
+    .portfolio-entry-desc {
+        text-align: center;
+        background: rgba(0.3, 0.3, 0.3, 0.7);
+        margin: 0 50px;
+    }
+
+
+}
+
+
+/* #endwi {
+    background-image: url("portfolio/endwi/bg.png");
+}
+
+#cmc {
+    background-image: url("portfolio/cmc/bg.jpg");
+}
+
+#china-great-wall {
+    background-image: url("portfolio/china-great-wall/bg.png");
+}
+
+#bc-one {
+    background-image: url("portfolio/bc-one/bg.png");
+} */
