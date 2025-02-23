@@ -3,6 +3,8 @@ import './portfolio-entry.js';
 import stacksData from './data/stacks.json' with { type: "json" };
 import projectsData from './data/projects.json' with { type: "json" };
 
+// import './main.scss';
+
 const projects = Object.assign({}, projectsData) as { [key: string]: any };
 for (const k in projects) projects[k].domElement = document.querySelector(`#${k}`);
 

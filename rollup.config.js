@@ -1,13 +1,14 @@
 import typescript from '@rollup/plugin-typescript';
 import json from '@rollup/plugin-json';
 import copy from 'rollup-plugin-copy';
-import watchGlobs from 'rollup-plugin-watch-globs';
+import sass from 'rollup-plugin-sass';
+import scss from 'rollup-plugin-scss';
 
 import fg from 'fast-glob';
 
 
 export default {
-    input: ['src/portfolio.ts'],
+    input: ['src/portfolio.ts', 'src/main.scss'],
     output: {
         dir: 'output',
         format: 'esm',
@@ -22,13 +23,17 @@ export default {
         }),
         {
             name: 'watch-external',
-            async buildStart(){
+            async buildStart() {
                 const files = await fg('static/**/*');
-                for(let file of files){
+                for (let file of files) {
                     this.addWatchFile(file);
                 }
             }
-        }
+        },
+        sass({
+            output: "./output/css/style.css",
+            failOnError: true,
+        }),
     ],
 
 };
