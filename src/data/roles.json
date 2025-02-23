@@ -1,0 +1,11 @@
+{
+    "PROGRAMMING": "Programming",
+    "RENDERING": "Shader development",
+    "TECH_DIRECTION": "Technical direction",
+    "PROJECT_DIRECTION": "Project direction",
+    "ARCHITECTURE": "Project architecture",
+    "DEVOPS": "DevOps",
+    "SYSADMIN": "Systems Administration",
+    "SETUP": "Event setup",
+    "LIVE_HOST": "Live Hosting"
+}

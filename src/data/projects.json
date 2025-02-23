@@ -1,0 +1,357 @@
+{
+    "endwi": {
+        "title": "ENDWI",
+        "client": "2018",
+        "year": "ENDWI New Mexico",
+        "stacks": [],
+        "roles": [
+            "TECH_DIRECTION",
+            "PROGRAMMER",
+            "RENDERING"
+        ],
+        "description": "ENDWI is an immersive story depicting the perception, results and consequences of drunk driving, with state of the art 3D motion capture provided by Microsoft and top of the line graphical fidelity.",
+        "references": [],
+        "challenges": [
+            "The biggest challenge of this project was twofold. First, attempting to reach an astounding level of graphic detail, which was paramount to correctly showcase the 3D capturing tech and make the experience truly immersive -all this while not requiring anything higher than a top end consumer GPU, or reasonable amounts of RAM",
+            "Also, we had to deal with several unexpected issues with the 3D capture playback plugin that caused crashes on UE."
+        ],
+        "solutions": [
+            "Hyperaggresive profiling and optimization of assets to maximize realism while maintaining performance budget and the required framerate for VR.",
+            "Development of practical VFX through custom shaders.",
+            "Manual tweaks and recompilation of engine code to accomodate the 3D plugin issues",
+            "Coordination of the design, modeling and animation team."
+        ]
+    },
+    "cmc": {
+        "title": "Cupra Master's Convention",
+        "client": "2021-22",
+        "year": "Seat",
+        "stacks": [],
+        "roles": [
+            "VIRTUAL_PRODUCTION",
+            "TECH_DIRECTION",
+            "ARCHITECTURE",
+            "SYSADMIN",
+            "DEVOPS"
+        ],
+        "description": "CMC is Cupra's worldwide convention, held, for the first time, due to COVID-19, 100% digitally through an immersive, interactive and multiuser environment, along with activities and challenges for participants to engage in.",
+        "references": [
+            "https://www.cupraofficial.mt/our-dna/experience/cupra-master-convention",
+            "https://www.youtube.com/watch?v=D0YhVSzLI3c",
+            "https://www.youtube.com/watch?v=ml8GwNfeHuU"
+        ],
+        "challenges": [
+            "This project posed an enormous challenge in terms of logistics and infrastructure, requiring the coordination of a large amount of interconnected resources, as well as aggresive optimization strategies to ensure decent performance on the best range of PCs possible, which was aggravated by the fact we were deploying to the web, and not standalone binaries",
+            "It was also a live event, meaning we had to handle any issues also at real time, or risk completely halting the event."
+        ],
+        "solutions": [
+            "Hyperaggresive optimization of assets to meet memory and performance requirements of a web release, with lower end target PCs.",
+            "Development of several model and asset pipelines to optimize assets through Blender automatization.",
+            "Complete oversight of netcode stacks to ensure maximum number of clients per shard.",
+            "Development of ad-hoc support services for client communications, distribution and control.",
+            "Complete oversight of cloud architecture, cost analysis and risk prediction for all needed resources.",
+            "Live coordination with several teams, both on and off site, during the actual event."
+        ]
+    },
+    "china-great-wall": {
+        "title": "World Bank - China's Great Wall Experience",
+        "client": "2020-21",
+        "year": "World Bank",
+        "stacks": [],
+        "roles": [
+            "PROJECT_DIRECTION",
+            "PROGRAMMING",
+            "RENDERING",
+            "ARCHITECTURE",
+            "DEVOPS"
+        ],
+        "description": "This is the result of World Bank's collaboration with the Chinese government to celebrate their partnership's anniversary through a web-based 360 experience, developed with Unreal Engine.",
+        "references": [
+            "https://owl-purple-86px.squarespace.com/work/china-and-world-bank-group-40-years-partnership-360-immersive-web"
+        ],
+        "challenges": [
+            "This project posed a challenge, as in this year, Unity wasn't quite to par with Unreal Engine for desired graphic quality, thus forcing adoption of UE, yet Epic having just dropped HTML5 build support",
+            "This forced us to rely on oder versions of UE, with community-driven build plugins",
+            "We also faced big issues with load times and memory optimization, as the client wished the highest fidelity while keeping load times low",
+            "Finally, there were challenges with the interactivity, as they desired the cards content in the experience to be dynamic."
+        ],
+        "solutions": [
+            "Hyperaggresive optimization of assets to meet memory and performance requirements of a web release, with lower end target PCs.",
+            "Development of a 100% custom build and deploy process, both in UE side and web side, allowing for runtime loading of external .pak files in the web, used to keep load times as short and sparse possible by doing lazy loading.",
+            "Development of practical VFX through shaders.",
+            "Development of a custom pipeline to manage content through a CMS and its consumption inside the experience."
+        ]
+    },
+    "bc-one": {
+        "title": "Redbull BC One 2017, Nagoya",
+        "client": "2017",
+        "year": "Red Bull Group",
+        "stacks": [],
+        "roles": [
+            "PROGRAMMING",
+            "SETUP",
+            "LIVE_HOST"
+        ],
+        "description": "We were invited by Red Bull to the BC One 2017 breakdancing world cup at Nagoya, Japan, to set up and operate several custom immersive stands where people could paint in VR in a custom tiltbrush scenario with a 3D sculpture of the world cup, and have photos of them taken while doing so, getting mixed into the 3D space, and sent to them. Partners Paraddax brought their holographic technology to make the experience really stand out too!.",
+        "references": [
+            "https://visyon360.com/project/redbull"
+        ],
+        "challenges": [
+            "The biggest and most obvious. We had to attend two venues, and we only had one translator",
+            "Somehow my Japanese was enough to get what we needed done",
+            "On the tech side, the main challenge was dealing with integrating the mixed reality pipeline, which we couldn't do on the tablets themselves, since it took way too much power, and we didn't have chargers for them, and needed a long battery life to last through the event",
+            "We also faced trouble with setting up our 4G routers for the desired connectivity through Japan's telecom systems."
+        ],
+        "solutions": [
+            "My input towards this project relied mainly on the following aspects: - Being live host to the stands",
+            "- Solving the internet connectivity issues under pressure",
+            "- Developing the custom OpenCV pipeline to handle mixed reality."
+        ]
+    },
+    "sirt": {
+        "title": "Sastre Virtual",
+        "client": "2017",
+        "year": "EY group",
+        "stacks": [],
+        "roles": [
+            "PROGRAMMING",
+            "RENDERING",
+            "RDI"
+        ],
+        "description": "This project involved a 3d body scan platform, which would be sent to a software that would take your measurements automatically in order to show you your best fit.",
+        "references": [
+            "https://www.youtube.com/watch?v=AcXfpihOAig"
+        ],
+        "challenges": [
+            "Dealing with the variability of human anatomy was the biggest challenge. I had to compensate for any shortcomings of the 3d scan too",
+            "There was also the fact that I had absolutely no clue about tailoring and measurements."
+        ],
+        "solutions": [
+            "Accelerated crash course on tailoring and measurement (thanks, Mom!)",
+            "Implementation of a PCA analysis routine to ensure alignment of scanned models (this was a shortcoming of the scanner).",
+            "Implementation of the analysis tool in C++ that would obtain the reference points and measures through OpenCV.",
+            "Developing the viewer in Unity that would display said points and measurements interactively."
+        ]
+    },
+    "walk-through-dementia": {
+        "title": "A Walk Through Dementia",
+        "client": "2018",
+        "year": "UK's Alzheimer Research Foundation",
+        "stacks": [],
+        "roles": [
+            "PROGRAMMING",
+            "RENDERING"
+        ],
+        "description": "This immersive VR experience would put you in the shoes of people afflicted with dementia, to conscience the world about the issues they constantly face.",
+        "references": [
+            "https://www.youtube.com/watch?v=TaeNgo8bR2k&t=199s",
+            "https://www.alzheimersresearchuk.org/campaigns/awtd/"
+        ],
+        "challenges": [
+            "The biggest challenge here was to make sure to understand correctly the domain language to correctly represent what we had to in the experience."
+        ],
+        "solutions": [
+            "Development of practical VFX to simulate the conditions of an afflicted person.",
+            "Development of custom Android build pipelines for Unity."
+        ]
+    },
+    "modmol": {
+        "title": "Modmol",
+        "client": "2019",
+        "year": "University of Barcelona",
+        "stacks": [],
+        "roles": [
+            "PROGRAMMING",
+            "RENDERING"
+        ],
+        "description": "This mobile AR application would let you build or visualize 3d orgnaic and inorganic molecules in augmented reality.",
+        "references": [
+            "https://play.google.com/store/apps/details?id=edu.ub.iqtc.modmol&hl=es_419&pli=1"
+        ],
+        "challenges": [
+            "The main challenge was of course correctly handling the required domain knowledge for such an application, as the bonding rules for covalent bonds are not exactly systematic and there are a lot of corner cases."
+        ],
+        "solutions": [
+            "My background in physics (which included some chemistry too) allowed me to efficiently interact with the client to solve all corner cases and bring the project to success within the very limited budget."
+        ]
+    },
+    "pingpong": {
+        "title": "Interactive Ping Pong",
+        "client": "2018",
+        "year": "Barcelona Games World",
+        "stacks": [],
+        "roles": [
+            "PROGRAMMING",
+            "RENDERING",
+            "TECH_DIRECTION",
+            "RDI"
+        ],
+        "description": "A commissioned project to develop an interactive ping pong table with bespoke games through scanning and detection technologies.",
+        "references": [
+            "https://play.google.com/store/apps/details?id=edu.ub.iqtc.modmol&hl=es_419&pli=1"
+        ],
+        "challenges": [
+            "This project was an absolute challenge",
+            "Not only was it the first project I solved while working from home (when it required heavy amounts of in-office presence)",
+            "Also, we had absolutely no control over the conditions and capabilities of the actual live setup, making it really hard to establish acceptance criteria."
+        ],
+        "solutions": [
+            "My background in physics helped immensely to both geometric calculations as well as signal processing calculations.",
+            "Had to devise a very flexible and configurable detection mechanism, so we could cope with uncertain conditions on site based on only minimal on-site testing.",
+            "Was my first big WFH project, when i didn't have the testing setup at home. Forced me to develop a replay system that allowed to test the project from previously recorded data, which became a staple for future projects."
+        ]
+    },
+    "unity-autoclass": {
+        "title": "Unity autoclass interface generator",
+        "client": "2018",
+        "year": "Internal",
+        "stacks": [],
+        "roles": [
+            "PROGRAMMING",
+            "RDI"
+        ],
+        "description": "A project to facilitate integration of native C/C++ libs into Unity's C# bindings, by generating C# code to seamlessly access from Unity.",
+        "references": [
+            "https://github.com/carlos-c-r/unity-autoclass"
+        ],
+        "challenges": [
+            "Brand new library at the time. required several iterations to accomodate to our usual use cases."
+        ],
+        "solutions": [
+            "Heavy trial and error to ensure resulting codegen was compilable and applicable. Ended providing invaluable time savings on our frequent native lib integrations."
+        ]
+    },
+    "unity-connmanager": {
+        "title": "Unity Connection Manager",
+        "client": "2018",
+        "year": "Internal",
+        "stacks": [],
+        "roles": [
+            "PROGRAMMING",
+            "RDI"
+        ],
+        "description": "An asynchronous multiplexer for a TCP based custom communication protocol for a project involving seven different client platforms, including Chromecast.",
+        "references": [
+            "https://github.com/carlos-c-r/unity-connmanager"
+        ],
+        "challenges": [
+            "Binding the Chromecast native libs to Unity C#, for which there were no publicly available libs.",
+            "Solving certain issues with Unity's dispatcher in mobile platforms regarding async request handling."
+        ],
+        "solutions": [
+            "Development of a bespoke C# binding library (included in this portfolio) to immediately adapt to changes in (by the quite unstable) required libraries.",
+            "Reverse engineering of Unity's dispatcher to manually implement a fix for the broken behaviours."
+        ]
+    },
+    "vrsdk": {
+        "title": "VR SDK",
+        "client": "2015-16",
+        "year": "In-house",
+        "stacks": [],
+        "roles": [
+            "PROGRAMMING"
+        ],
+        "description": "This was a fully fledged SDK for building interactive VR experiences for the only platforms allowing mobile VR back in the day, that being Google Cardboard, and eventually, before discontinuation, Samsung GearVR and Google Daydream.",
+        "references": [
+            "https://github.com/carlos-c-r/vrsdk"
+        ],
+        "challenges": [
+            "The amount of projects coming in requiring a cardboard, gearVR or daydream solution, and the unavailability or immaturity of relevant Unity/UE plugins at the time, prompted us to develop an in-house solution."
+        ],
+        "solutions": [
+            "Adapting, as the sole Android developer back then, to the ever changing requirements in an extensible way to keep the SDK usable.",
+            "Handling the idiosyncrasies of each supported platform at the time, was tricky, as there was no open standard like OpenXR today."
+        ]
+    },
+    "haptics": {
+        "title": "Telefonica hápticos",
+        "client": "2024",
+        "year": "La Frontera VR / Telefónica",
+        "stacks": [],
+        "roles": [
+            "PROGRAMMING",
+            "ARCHITECTURE",
+            "DEVOPS"
+        ],
+        "description": "This was a project commissioned by Telefonica for the Mobile World Congress 2024, involving streaming of a VR game played in top end computers, to clients in-venue, synchronized with a haptic body vest, set up to react to in game stimuli The challenges",
+        "references": [
+            "https://github.com/carlos-c-r/telefonica-mwc2024-hapticos",
+            "https://github.com/carlos-c-r/telefonica-mwc2024-supervisor"
+        ],
+        "challenges": [
+            "This project was a long string of issues coming from the interoperation of several completely different stacks, such as Cloud XR, Unreal Engine, Quest OS, and the bHaptics SDK."
+        ],
+        "solutions": [
+            "Reverse engineering certain parts of Steam and SteamVR to ensure correct management of them and the CloudXR plugin in a nonsupervised way.",
+            "Development of a custom API and supervisor script managing the interoperation of the stacks.",
+            "Development of a custom Android client for Quest, with the CloudXR plugin and a native renderer.",
+            "Development of a custom relay pipeline, for the launched UE app to be able to send haptic events to the vest connected to the Android client."
+        ]
+    },
+    "uvisit": {
+        "title": "UVisit",
+        "client": "2015",
+        "year": "Unknown",
+        "stacks": [],
+        "roles": [
+            "PROGRAMMING",
+            "RENDERING"
+        ],
+        "description": "World's first, to my knowledge, VR remote conferencing software",
+        "references": [],
+        "challenges": [
+            "This project was a long string of issues coming from the interoperation of several completely different stacks, such as Cloud XR, Unreal Engine, Quest OS, and the bHaptics SDK."
+        ],
+        "solutions": [
+            "Reverse engineering certain parts of Steam and SteamVR to ensure correct management of them and the CloudXR plugin in a nonsupervised way.",
+            "Development of a custom API and supervisor script managing the interoperation of the stacks.",
+            "Development of a custom Android client for Quest, with the CloudXR plugin and a native renderer.",
+            "Development of a custom relay pipeline, for the launched UE app to be able to send haptic events to the vest connected to the Android client."
+        ]
+    },
+    "laravel-deploy": {
+        "title": "Laravel Deployment Stack",
+        "client": "2023-24",
+        "year": "La Frontera VR",
+        "stacks": [],
+        "roles": [
+            "ARCHITECTURE",
+            "DEVOPS",
+            "SYSADMIN"
+        ],
+        "description": "This is a set of github actions, combined with machine image provisioning, to provide a fully functional Laravel stack on a single click. It was motivated through the client's usual need of deploying Laravel stacks for multitude of projects.",
+        "references": [],
+        "challenges": [],
+        "solutions": []
+    },
+    "nest-generic-controller": {
+        "title": "Nest JS Generic Controller package.",
+        "client": "2023-24",
+        "year": "Metacampus SLU",
+        "stacks": [],
+        "roles": [
+            "PROGRAMMING"
+        ],
+        "description": "This is a Nest JS package to enable creating extensible CRUD controllers for any entity with just one line of code. It was motivated by the client's platform requiring multitude of entity types with common CRUD operations. The repo explores the more metaprogramming side of TS's compilation and transpilation process, as well as an in-depth reverse engineering of the mechanisms of Nest JS and TypeORM.",
+        "references": [],
+        "challenges": [],
+        "solutions": []
+    },
+    "labeling": {
+        "title": "Twitter Labeling Tool",
+        "client": "2023-24",
+        "year": "Metacampus SLU",
+        "stacks": [],
+        "roles": [
+            "ARCHITECTURE",
+            "PROGRAMMING",
+            "DEVOPS",
+            "SYSADMIN",
+            "TECH_DIRECTION"
+        ],
+        "description": "This tool is part of a larger suite dedicated to build Twitter fed classifiers. It enables for operators to label incoming tweets to train the classifiers.",
+        "references": [],
+        "challenges": [],
+        "solutions": []
+    }
+}

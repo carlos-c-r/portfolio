@@ -4,691 +4,129 @@
 
 <head>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
-  <template id="portfolio-entry-section-selector">
+    <template id="portfolio-entry-section-selector">
 
-  </template>
+    </template>
 
-  <template id="f-b">
-    <style>
-      :host {
-        display: inline-flex;
-        align-items: center;
-        gap: 2px;
-        cursor: pointer;
-        user-select: none;
-        border: 1px solid black;
-        border-radius: 8px;
-        padding: 0px 4px 0px;
-      }
+    <template id="portfolio-entry">
+        <style>
+            :host {
+                display: block;
+                background-size: 100% 100%;
+                color: white;
+            }
+            .portfolio-entry-stacks {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 2px;
+            }
+        </style>
 
-      :host([selected]) {
-        border: 1px solid green;
-      }
+        <h1>
+            <slot name="title"></slot>
+        </h1>
+        <h2>
+            <slot name="client"></slot>
+        </h2>
+        <h3>
+            <slot name="role"></slot>
+        </h3>
+        <div class="portfolio-entry-stacks">
+            <slot name="stacks"></slot>
+        </div>
+        <p class="portfolio-entry-desc">
+            <slot name="portfolio-entry-desc"></slot>
+        </p>
+        <div class="portfolio-entry-challenges">
+            <h4>The challenges</h4>
+            <ul>
+                <slot name="challenges"></slot>
+            </ul>
+        </div>
+        <div class="portfolio-entry-solutions">
+            <h4>The solutions</h4>
+            <ul>
+                <slot name="solutions"></slot>
+            </ul>
+        </div>
+        <div class="portfolio-entry-references">
+            <h4>References</h4>
+            <ul>
+                <slot name="references"></slot>
+            </ul>
+        </div>
 
-      .fb-icon,
-      .fb-label {
-        pointer-events: none;
-      }
+    </template>
 
-      span.fb-icon {
-        font-size: 24px;
-        margin-top: 2px;
-      }
-    </style>
-    <span class="fb-icon">
-      <slot name="icon"></slot>
-    </span>
-    <span class="fb-label">
-      <slot name="label">asdf</slot>
-    </span>
-  </template>
+    <template id="f-b">
+        <style>
+            :host {
+                display: inline-flex;
+                align-items: center;
+                gap: 2px;
+                cursor: pointer;
+                user-select: none;
+                border: 1px solid black;
+                border-radius: 8px;
+                padding: 0px 4px 0px;
+            }
 
-  <link rel="stylesheet" href="main.css" />
+            :host([selected]) {
+                border: 1px solid green;
+            }
+
+            :host([unclickable]) {
+                border: 1px solid green;
+                pointer-events: none;
+            }
+
+            .fb-icon,
+            .fb-label {
+                pointer-events: none;
+            }
+
+            span.fb-icon {
+                font-size: 24px;
+                margin-top: 2px;
+            }
+        </style>
+        <span class="fb-icon">
+            <slot name="icon"></slot>
+        </span>
+        <span class="fb-label">
+            <slot name="label">asdf</slot>
+        </span>
+    </template>
+
+    <link rel="stylesheet" href="main.css" />
 
 
-  <script type="module" src="./portfolio.js"></script>
+    <script type="module" src="./portfolio.js"></script>
 
 </head>
 
 <body>
 
-  <div id="filters">
-    <!--populated from createFilters()-->
-  </div>
+    <div id="filters">
+        <!--populated from createFilters()-->
+    </div>
 
-  <script type="module">
-    import { createFilters } from './portfolio.js';
+    <script type="module">
+        import { createFilters } from './portfolio.js';
 
-    createFilters();
-  </script>
+        createFilters();
+    </script>
 
 
-  <div class="portfolio-entry" id="endwi">
-    <h1>ENDWI</h1>
-    <h2>2018, ENDWI New Mexico</h2>
-    <h3>Technical Direction, Shader programming, C++ Programming, Unreal Engine</h3>
-    <h4>Stacks</h4>
-    <div class="portfolio-entry-stacks">
+    <div id="portfolio">
 
     </div>
-    <p class="portfolio-entry-desc">
-      ENDWI is an immersive story depicting the perception, results and consequences of drunk driving, with
-      state
-      of the art 3D motion capture provided by Microsoft and top of the line graphical fidelity.
-    </p>
-    <h4>The challenges</h4>
-    <p>
-      The biggest challenge of this project was twofold. First, attempting to reach an astounding level of
-      graphic
-      detail, which was paramount to correctly showcase the 3D capturing tech and make the experience truly
-      immersive -all this while not requiring anything higher than a top end consumer GPU, or reasonable
-      amounts
-      of RAM.
-      Also, we had to deal with several unexpected issues with the 3D capture playback plugin that caused
-      crashes
-      on UE.
-    </p>
-    <h4>The solutions</h4>
-    <p>
-      My input towards this project relied mainly on the following aspects:
-      - Hyperaggresive profiling and optimization of assets to maximize realism while maintaining performance
-      budget and the required framerate for VR.
-      - Development of practical VFX through custom shaders.
-      - Manual tweaks and recompilation of engine code to accomodate the 3D plugin issues
-      - Coordination of the design, modeling and animation team.
-    </p>
-    <div class="portfolio-entry-references">
-      <h4>References</h4>
-      <p>
-        https://www.endwi.com/virtualreality
-        https://www.youtube.com/watch?v=oUCQ0_wSmTI
-      </p>
-    </div>
-  </div>
-
-  <div class="portfolio-entry" id="cmc">
-    <h1>Cupra Master's Convention</h1>
-    <h2>2021-22, Seat, Volkswagen group</h2>
-    <h3>Virtual production, Technical direction, Cloud architecture, System Administration, Unity, AWS</h3>
-    <h4>Stacks</h4>
-    <div class="portfolio-entry-stacks">
-
-    </div>
-    <p class="portfolio-entry-desc">
-      CMC is Cupra's worldwide convention, held, for the first time, due to COVID-19, 100% digitally through
-      an
-      immersive, interactive and multiuser environment, along with activities and challenges for participants
-      to
-      engage in.
-    </p>
-    <h4>The challenges</h4>
-    <p>
-      This project posed an enormous challenge in terms of logistics and infrastructure, requiring the
-      coordination of a large amount of interconnected resources, as well as aggresive optimization strategies
-      to
-      ensure decent performance on the best range of PCs possible, which was aggravated by the fact we were
-      deploying to the web, and not standalone binaries.
-      It was also a live event, meaning we had to handle any issues also at real time, or risk completely
-      halting
-      the event.
-    </p>
-    <h4>The solutions</h4>
-    <p>
-      My input towards this project relied mainly on the following aspects:
-      - Hyperaggresive optimization of assets to meet memory and performance requirements of a web release,
-      with
-      lower end target PCs.
-      - Development of several model and asset pipelines to optimize assets through Blender automatization.
-      - Complete oversight of netcode stacks to ensure maximum number of clients per shard.
-      - Development of ad-hoc support services for client communications, distribution and control.
-      - Complete oversight of cloud architecture, cost analysis and risk prediction for all needed resources.
-      - Live coordination with several teams, both on and off site, during the actual event.
-    </p>
-    <div class="portfolio-entry-references">
-      <h4>References</h4>
-      <ul>
-        <li>https://www.cupraofficial.mt/our-dna/experience/cupra-master-convention</li>
-        <li>https://www.youtube.com/watch?v=D0YhVSzLI3c</li>
-        <li>https://www.youtube.com/watch?v=ml8GwNfeHuU</li>
-      </ul>
-    </div>
-  </div>
-  <div class="portfolio-entry" id="china-great-wall">
-    <h1>World Bank - China's Great Wall Experience</h1>
-    <h2>2020-21 - World Bank</h2>
-    <h3>Technical direction, C++ Programming, JS programming, Level design, Unreal Engine</h3>
-    <h4>Stacks</h4>
-    <div class="portfolio-entry-stacks">
-
-    </div>
-    <p class="portfolio-entry-desc">
-      This is the result of World Bank's collaboration with the Chinese government to celebrate their
-      partnership's anniversary through a web-based 360 experience, developed with Unreal Engine.
-    </p>
-    <h4>The challenges</h4>
-    <p>
-      This project posed a challenge, as in this year, Unity wasn't quite to par with Unreal Engine for
-      desired
-      graphic quality, thus forcing adoption of UE, yet Epic having just dropped HTML5 build support.
-      This forced us to rely on oder versions of UE, with community-driven build plugins.
-      We also faced big issues with load times and memory optimization, as the client wished the highest
-      fidelity
-      while keeping load times low.
-      Finally, there were challenges with the interactivity, as they desired the cards content in the
-      experience
-      to be dynamic.
-    </p>
-    <h4>The solutions</h4>
-    <p>
-      My input towards this project relied mainly on the following aspects:
-      - Hyperaggresive optimization of assets to meet memory and performance requirements of a web
-      release,
-      with
-      lower end target PCs.
-      - Development of a 100% custom build and deploy process, both in UE side and web side, allowing for
-      runtime
-      loading of external .pak files in the web, used to keep load times as short and sparse possible by
-      doing
-      lazy loading.
-      - Development of practical VFX through shaders.
-      - Development of a custom pipeline to manage content through a CMS and its consumption inside the
-      experience.
-    </p>
-    <div class="portfolio-entry-references">
-      <h4>References</h4>
-      <ul>
-        <li>
-          https://owl-purple-86px.squarespace.com/work/china-and-world-bank-group-40-years-partnership-360-immersive-web
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="portfolio-entry" id="bc-one">
-    <h1>Redbull BC One 2017, Nagoya</h1>
-    <h2>2017 - Red Bull Group</h2>
-    <h3>Android programming, Mixed reality, Hardware setup, Live event hosting.</h3>
-    <h4>Stacks</h4>
-    <div class="portfolio-entry-stacks">
-
-    </div>
-    <p class="portfolio-entry-desc">
-      We were invited by Red Bull to the BC One 2017 breakdancing world cup at Nagoya, Japan, to set
-      up and
-      operate several custom immersive stands where people could paint in VR in a custom tiltbrush
-      scenario
-      with a
-      3D sculpture of the world cup, and have photos of them taken while doing so, getting mixed into
-      the 3D
-      space, and sent to them.
-      Partners Paraddax brought their holographic technology to make the experience really stand out
-      too!.
-    </p>
-    <h4>The challenges</h4>
-    <p>
-      The biggest and most obvious. We had to attend two venues, and we only had one translator.
-      Somehow my
-      Japanese was enough to get what we needed done.
-      On the tech side, the main challenge was dealing with integrating the mixed reality pipeline,
-      which we
-      couldn't do on the tablets themselves, since it took way too much power, and we didn't have
-      chargers for
-      them, and needed a long battery life to last through the event.
-      We also faced trouble with setting up our 4G routers for the desired connectivity through
-      Japan's
-      telecom
-      systems.
-    </p>
-    <h4>The solutions</h4>
-    <p>
-      My input towards this project relied mainly on the following aspects:
-      - Being live host to the stands.
-      - Solving the internet connectivity issues under pressure.
-      - Developing the custom OpenCV pipeline to handle mixed reality.
-    </p>
-    <div class="portfolio-entry-references">
-      <h4>References</h4>
-      <ul>
-        <li>https://visyon360.com/project/redbull</li>
-      </ul>
-    </div>
-  </div>
-  <div class="portfolio-entry" id="sirt">
-    <h1>Sastre Virtual</h1>
-    <h2>2017 - EY group</h2>
-    <h3>Shader programming, C++ programming, C# programming, Python programming, Unity, OpenCV</h3>
-    <p class="portfolio-entry-desc">
-      This project involved a 3d body scan platform, which would be sent to a software that would
-      take your
-      measurements automatically in order to show you your best fit.
-    </p>
-    <h4>Stacks</h4>
-    <div class="portfolio-entry-stacks">
-
-    </div>
-    <h4>The challenges</h4>
-    <p>
-      Dealing with the variability of human anatomy was the biggest challenge. I had to compensate
-      for any
-      shortcomings of the 3d scan too.
-      There was also the fact that I had absolutely no clue about tailoring and measurements.
-    </p>
-    <h4>The solutions</h4>
-    <p>
-      - Accelerated crash course on tailoring and measurement (thanks, Mom!)
-      - Implementation of a PCA analysis routine to ensure alignment of scanned models (this was a
-      shortcoming
-      of
-      the scanner).
-      - Implementation of the analysis tool in C++ that would obtain the reference points and
-      measures through
-      OpenCV.
-      - Developing the viewer in Unity that would display said points and measurements
-      interactively.
-    </p>
-    <div class="portfolio-entry-references">
-      <h4>References</h4>
-      <ul>
-        <li>https://www.youtube.com/watch?v=AcXfpihOAig</li>
-      </ul>
-    </div>
-  </div>
-  <div class="portfolio-entry" id="walk-through-dementia">
-    <h1>A Walk Through Dementia</h1>
-    <h2>2018 - UK's Alzheimer Research Foundation</h2>
-    <h3>Android programming, Shader programming, Unity</h3>
-    <h4>Stacks</h4>
-    <div class="portfolio-entry-stacks">
-
-    </div>
-    <p class="portfolio-entry-desc">
-      This immersive VR experience would put you in the shoes of people afflicted with
-      dementia, to conscience
-      the
-      world about the issues they constantly face.
-    </p>
-    <h4>The challenges</h4>
-    <p>
-      The biggest challenge here was to make sure to understand correctly the domain language
-      to correctly
-      represent what we had to in the experience.
-    </p>
-    <h4>The solutions</h4>
-    <p>
-      - Development of practical VFX to simulate the conditions of an afflicted person.
-      - Development of custom Android build pipelines for Unity.
-    </p>
-    <div class="portfolio-entry-references">
-      <h4>References</h4>
-      <ul>
-        <li>https://www.youtube.com/watch?v=TaeNgo8bR2k&t=199s</li>
-        <li>https://www.alzheimersresearchuk.org/campaigns/awtd/</li>
-      </ul>
-    </div>
-  </div>
-  <div class="portfolio-entry" id="modmol">
-    <h1>Modmol</h1>
-    <h2>2019 - University of Barcelona</h2>
-    <h3>Shader programming, C# Programming, Unity</h3>
-    <h4>Stacks</h4>
-    <div class="portfolio-entry-stacks">
-
-    </div>
-    <p class="portfolio-entry-desc">
-      This mobile AR application would let you build or visualize 3d orgnaic and inorganic
-      molecules in
-      augmented
-      reality.
-    </p>
-    <h4>The challenges</h4>
-    <p>
-      The main challenge was of course correctly handling the required domain knowledge
-      for such an
-      application,
-      as the bonding rules for covalent bonds are not exactly systematic and there are a
-      lot of corner cases.
-    </p>
-    <h4>The solutions</h4>
-    <p>
-      - My background in physics (which included some chemistry too) allowed me to
-      efficiently interact with
-      the
-      client to solve all corner cases and bring the project to success within the very
-      limited budget.
-    </p>
-    <div class="portfolio-entry-references">
-      <h4>References</h4>
-      <ul>
-        <li>https://play.google.com/store/apps/details?id=edu.ub.iqtc.modmol&hl=es_419&pli=1
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="portfolio-entry" id="pingpong">
-    <h1>Interactive Ping Pong</h1>
-    <h2>2018 - Barcelona Games World</h2>
-    <h3>Shader programming, C# Programming, Unity, OpenCV, C++ programming, Python
-      programming, Embedded
-      programming.</h3>
-    <h4>Stacks</h4>
-    <div class="portfolio-entry-stacks">
-
-    </div>
-    <p class="portfolio-entry-desc">
-      A commissioned project to develop an interactive ping pong table with bespoke
-      games through scanning and
-      detection technologies.
-    </p>
-    <h4>The challenges</h4>
-    <p>
-      This project was an absolute challenge.
-      Not only was it the first project I solved while working from home (when it
-      required heavy amounts of
-      in-office presence).
-      Also, we had absolutely no control over the conditions and capabilities of the
-      actual live setup, making it
-      really hard to establish acceptance criteria.
-    </p>
-    <h4>The solutions</h4>
-    <p>
-      - My background in physics helped immensely to both geometric calculations as
-      well as signal processing
-      calculations.
-      - Had to devise a very flexible and configurable detection mechanism, so we
-      could cope with uncertain
-      conditions on site based on only minimal on-site testing.
-      - Was my first big WFH project, when i didn't have the testing setup at home.
-      Forced me to develop a replay
-      system that allowed to test the project from previously recorded data, which
-      became a staple for future
-      projects.
-    </p>
-    <div class="portfolio-entry-references">
-      <h4>References</h4>
-      <ul>
-        <li>https://play.google.com/store/apps/details?id=edu.ub.iqtc.modmol&hl=es_419&pli=1
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="portfolio-entry" id="unity-autoclass">
-    <h1>Unity autoclass interface generator</h1>
-    <h2>2018 - Internal</h2>
-    <h3>C++ programming.</h3>
-    <h4>Stacks</h4>
-    <div class="portfolio-entry-stacks">
-
-    </div>
-    <p class="portfolio-entry-desc">
-      A project to facilitate integration of native C/C++ libs into Unity's C#
-      bindings, by generating C# code to
-      seamlessly access from Unity.
-    </p>
-    <h4>The challenges</h4>
-    <p>
-      - Brand new library at the time. required several iterations to accomodate
-      to our usual use cases.
-    </p>
-    <h4>The solutions</h4>
-    <p>
-      - Heavy trial and error to ensure resulting codegen was compilable and
-      applicable. Ended providing
-      invaluable time savings on our frequent native lib integrations.
-    </p>
-    <div class="portfolio-entry-references">
-      <h4>References</h4>
-      <ul>
-        <li>https://github.com/carlos-c-r/unity-autoclass</li>
-      </ul>
-    </div>
-  </div>
-  <div class="portfolio-entry" id="unity-connmanager">
-    <h1>Unity Connection Manager</h1>
-    <h2>2018 - Internal</h2>
-    <h3>C++ programming., C# programming, Web programming, Chromecast, Unity
-    </h3>
-    <h4>Stacks</h4>
-    <div class="portfolio-entry-stacks">
-
-    </div>
-    <p class="portfolio-entry-desc">
-      An asynchronous multiplexer for a TCP based custom communication
-      protocol for a project involving seven
-      different client platforms, including Chromecast.
-    </p>
-    <h4>The challenges</h4>
-    <p>
-      - Binding the Chromecast native libs to Unity C#, for which there were
-      no publicly available libs.
-      - Solving certain issues with Unity's dispatcher in mobile platforms
-      regarding async request handling.
-    </p>
-    <h4>The solutions</h4>
-    <p>
-      - Development of a bespoke C# binding library (included in this
-      portfolio) to immediately adapt to changes
-      in (by the quite unstable) required libraries.
-      - Reverse engineering of Unity's dispatcher to manually implement a fix
-      for the broken behaviours.
-    <div class="portfolio-entry-references">
-      <h4>References</h4>
-      <ul>
-        <li>https://github.com/carlos-c-r/unity-connmanager</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="portfolio-entry" id="vrsdk">
-    <h1>VR SDK</h1>
-    <h2>2015-16, In-house</h2>
-    <h3>Android programming, Java programming, C++ programming</h3>
-    <h4>Stacks</h4>
-    <div class="portfolio-entry-stacks">
-
-    </div>
-    <p class="portfolio-entry-desc">
-      This was a fully fledged SDK for building interactive VR experiences
-      for the only platforms allowing
-      mobile
-      VR back in the day, that being Google Cardboard, and eventually,
-      before discontinuation, Samsung GearVR
-      and
-      Google Daydream.
-    </p>
-    <h4>The challenges</h4>
-    <p>
-      The amount of projects coming in requiring a cardboard, gearVR or
-      daydream solution, and the
-      unavailability
-      or immaturity of relevant Unity/UE plugins at the time, prompted us
-      to develop an in-house solution.
-    </p>
-    <h4>The solutions</h4>
-    <p>
-      - Adapting, as the sole Android developer back then, to the ever
-      changing requirements in an extensible
-      way
-      to keep the SDK usable.
-      - Handling the idiosyncrasies of each supported platform at the
-      time, was tricky, as there was no open
-      standard like OpenXR today.
-    </p>
-    <div class="portfolio-entry-references">
-      <h4>References</h4>
-      <ul>
-        <li>https://github.com/carlos-c-r/vrsdk</li>
-      </ul>
-    </div>
-  </div>
-  <div class="portfolio-entry" id="haptics">
-    <h1>Telefonica hápticos</h1>
-    <h2>2024 - La Frontera VR / Telefónica</h2>
-    <h3>Android programming, C++ programming, Javascript programming,
-      Cloud Architecture, Devops</h3>
-    <h4>Stacks</h4>
-    <div class="portfolio-entry-stacks">
-
-    </div>
-    <p class="portfolio-entry-desc">
-      This was a project commissioned by Telefonica for the Mobile
-      World Congress 2024, involving streaming of
-      a
-      VR game played in top end computers, to clients in-venue,
-      synchronized with a haptic body vest, set up
-      to
-      react to in game stimuli
-    <h4>The challenges</h4>
-    <p>
-      This project was a long string of issues coming from the
-      interoperation of several completely different
-      stacks, such as Cloud XR, Unreal Engine, Quest OS, and the
-      bHaptics SDK.
-
-    </p>
-    <h4>The solutions</h4>
-    <p>
-      - Reverse engineering certain parts of Steam and SteamVR to
-      ensure correct management of them and the
-      CloudXR plugin in a nonsupervised way.
-      - Development of a custom API and supervisor script managing the
-      interoperation of the stacks.
-      - Development of a custom Android client for Quest, with the
-      CloudXR plugin and a native renderer.
-      - Development of a custom relay pipeline, for the launched UE
-      app to be able to send haptic events to
-      the
-      vest connected to the Android client.
-    </p>
-    <div class="portfolio-entry-references">
-      <h4>References</h4>
-      <ul>
-        <li>https://github.com/carlos-c-r/telefonica-mwc2024-hapticos
-        </li>
-        <li>https://github.com/carlos-c-r/telefonica-mwc2024-supervisor
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="portfolio-entry" id="uvisit">
-    <h1>UVisit</h1>
-    <h2>2015</h2>
-    <h3>Android programming, Shader programming</h3>
-    <h4>Stacks</h4>
-    <div class="portfolio-entry-stacks">
-
-    </div>
-    <p class="portfolio-entry-desc">
-      World's first, to my knowledge, VR remote conferencing
-      software
-    </p>
-    <h4>The challenges</h4>
-    <p>
-      This project was a long string of issues coming from the
-      interoperation of several completely different
-      stacks, such as Cloud XR, Unreal Engine, Quest OS, and the
-      bHaptics SDK.
-
-    </p>
-    <h4>The solutions</h4>
-    <p>
-      - Reverse engineering certain parts of Steam and SteamVR to
-      ensure correct management of them and the
-      CloudXR plugin in a nonsupervised way.
-      - Development of a custom API and supervisor script managing
-      the interoperation of the stacks.
-      - Development of a custom Android client for Quest, with the
-      CloudXR plugin and a native renderer.
-      - Development of a custom relay pipeline, for the launched
-      UE app to be able to send haptic events to
-      the
-      vest connected to the Android client.
-    </p>
-    <div class="portfolio-entry-references">
-      <h4>References</h4>
-      <ul>
-
-      </ul>
-    </div>
-  </div>
-  <div class="portfolio-entry" id="laravel-deploy">
-    <h1>Laravel Deployment Stack</h1>
-    <h2>2023-24 La Frontera VR</h2>
-    <h3>Bash, Cloud Architecture, DevOps, System Administration
-    </h3>
-    <h4>Stacks</h4>
-    <div class="portfolio-entry-stacks">
-
-    </div>
-    <p class="portfolio-entry-desc">
-      This is a set of github actions, combined with machine
-      image provisioning, to provide a fully functional
-      Laravel stack on a single click.
-      It was motivated through the client's usual need of
-      deploying Laravel stacks for multitude of projects.
-    </p>
-
-    <div class="portfolio-entry-references">
-      <h4>References</h4>
-      <ul>
-      </ul>
-    </div>
-  </div>
-  <div class="portfolio-entry" id="nest-generic-controller">
-    <h1>Nest JS Generic Controller package.</h1>
-    <h2>2023-24 Metacampus SLU</h2>
-    <h3>TS programming</h3>
-    <h4>Stacks</h4>
-    <div class="portfolio-entry-stacks">
-
-    </div>
-    <p class="portfolio-entry-desc">
-      This is a Nest JS package to enable creating
-      extensible CRUD controllers for any entity with just
-      one
-      line
-      of code.
-      It was motivated by the client's platform requiring
-      multitude of entity types with common CRUD
-      operations.
-      The repo explores the more metaprogramming side of
-      TS's compilation and transpilation process, as well
-      as an
-      in-depth reverse engineering of the mechanisms of
-      Nest JS and TypeORM.
-    </p>
-
-    <div class="portfolio-entry-references">
-      <h4>References</h4>
-      <ul>
-      </ul>
-    </div>
-  </div>
-  <div class="portfolio-entry" id="labeling">
-    <h1>Twitter Labeling Tool</h1>
-    <h2>2023-24 Metacampus SLU</h2>
-    <h3>TS Programming, Angular, AWS</h3>
-    <h4>Stacks</h4>
-    <div class="portfolio-entry-stacks">
-
-    </div>
-    <p class="portfolio-entry-desc">
-      This tool is part of a larger suite dedicated to
-      build Twitter fed classifiers.
-      It enables for operators to label incoming
-      tweets to train the classifiers.
-    </p>
-
-    <div class="portfolio-entry-references">
-      <h4>References</h4>
-      <ul>
-      </ul>
-    </div>
-  </div>
-  <!-- <div class="container">
+    <!-- <div class="container">
         <div class="section">
             <div class="huge"></div>
         </div>
@@ -698,10 +136,11 @@
         <div class="section"></div>
     </div> -->
 
-  <script type="module">
-    import { setBackgrounds } from './portfolio.js';
+    <script type="module">
+        import { setBackgrounds, createProjects } from './portfolio.js';
         //setBackgrounds();
-  </script>
+        createProjects();
+    </script>
 </body>
 
 </html>
