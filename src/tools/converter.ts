@@ -2,7 +2,7 @@ import { createReadStream } from 'fs';
 import { parse } from 'node-html-parser';
 import { text } from 'stream/consumers';
 
-const html = await text(createReadStream('projects.html'));
+const html = await text(createReadStream('static/projects.html'));
 
 const dom = parse(html);
 
@@ -14,12 +14,13 @@ const data = entries.reduce((acc, x) => {
     const roles = x.querySelector('h3')?.textContent?.split(',')?.map(x => deindent(x)) || [];
     const references = x.querySelectorAll('.portfolio-entry-references li').map(x => x.textContent.trim());
     const paragraphs = x.querySelectorAll('p').map(x => x.textContent);
+    const stacks = x.querySelector('.portfolio-entry-stacks')?.textContent?.split(',')?.map(x => x.trim())?.filter(x => x) || [];
 
     acc[x.id] = {
         title: x.querySelector('h1')?.textContent || '',
         client: clientDate?.[0] || '',
         year: clientDate?.[1] || '',
-        stacks: [],
+        stacks,
         roles,
         description: deindent(paragraphs[0]),
         references,

@@ -1,4 +1,7 @@
-import projectsData from './data/projects.json';
+import projectsData from './data/projects.json' with { type: "json" };
+import stackIconsData from './data/stackicons.json' with { type: "json" };
+import stacksData from './data/stacks.json' with { type: "json" };
+import rolesData from './data/roles.json' with { type: "json" };
 import { FilterButton } from './filter-button.js';
 
 
@@ -15,6 +18,9 @@ interface PortfolioEntryData {
 }
 
 const projects = projectsData as unknown as { [key: string]: PortfolioEntryData }; 
+const stackIcons = stackIconsData as unknown as { [key: string]: string };
+const stacks = stacksData as unknown as { [key: string]: string };
+const roles = rolesData as unknown as { [key: string]: string };
 
 export class PortfolioEntry extends HTMLElement {
 
@@ -42,8 +48,6 @@ export class PortfolioEntry extends HTMLElement {
         let id = this.getAttribute("name");
         if (!id) throw new Error(`Portfolio entries must have the name attribute set.`);
 
-        const project = projects[id]
-
         let titleSlot = document.createElement("span");
         titleSlot.textContent = projects[id].title;
         titleSlot.setAttribute("slot", "title");
@@ -57,7 +61,7 @@ export class PortfolioEntry extends HTMLElement {
         clientSlot.setAttribute("slot", "client");
 
         let roleSlot = document.createElement("span");
-        roleSlot.textContent = projects[id].roles.join(', ');
+        roleSlot.textContent = projects[id].roles.map(x => roles[x] || x).join(', ');
         roleSlot.setAttribute("slot", "role");
 
         this.root.host.appendChild(titleSlot);
@@ -66,7 +70,7 @@ export class PortfolioEntry extends HTMLElement {
         this.root.host.appendChild(roleSlot);
 
         for (const s of projects[id].stacks) {
-            const chip = FilterButton.make(s, s);
+            const chip = FilterButton.make(stackIcons[s] || s, stacks[s]);
             chip.setAttribute("slot", "stacks");
             chip.setAttribute("selected", "");
             chip.setAttribute('unclickable', '');
@@ -107,7 +111,8 @@ export class PortfolioEntry extends HTMLElement {
             this.root.host.appendChild(elm);
         }
 
-        this.root.host.style.backgroundImage = `url("portfolio/${id}/bg.png")`;
+        
+        this.root.querySelector('.background').style.backgroundImage = `url("portfolio/${id}/bg.png")`;
     }
 }
 

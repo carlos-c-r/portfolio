@@ -24,6 +24,11 @@ body {
     font-weight: 400;
     font-style: normal;
     font-variation-settings: "wdth" 100;
+
+    background-color: darkslategray;
+    color: aquamarine;
+
+
 }
 
 .container {
@@ -52,36 +57,15 @@ body {
     padding: 8px;
 }
 
-.section:nth-child(1) {
-    background: url(https://cdn.pixabay.com/photo/2014/09/05/18/32/old-books-436498_960_720.jpg);
-}
-
-.section:nth-child(2) {
-    background: url(https://cdn.pixabay.com/photo/2015/06/02/12/59/narrative-794978_960_720.jpg);
-}
-
-.section:nth-child(3) {
-    background: url(https://cdn.pixabay.com/photo/2016/09/08/22/43/books-1655783_960_720.jpg);
-}
-
-.section:nth-child(3) {
-    background: url(https://cdn.pixabay.com/photo/2015/12/19/20/32/paper-1100254_960_720.jpg);
-}
-
-.section:nth-child(4) {
-    background: url(https://cdn.pixabay.com/photo/2016/03/26/22/21/books-1281581_960_720.jpg);
-}
-
-.section:nth-child(5) {
-    background: url(https://cdn.pixabay.com/photo/2014/05/03/00/46/notebook-336634_960_720.jpg);
-}
-
 .portfolio-entry.hidden {
     display: none;
 }
 
 .portfolio-entry {
+    
     background-size: cover;
+
+    
 
     h1 {
         text-align: center;

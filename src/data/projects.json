@@ -3,11 +3,16 @@
         "title": "ENDWI",
         "client": "2018",
         "year": "ENDWI New Mexico",
-        "stacks": [],
+        "stacks": [
+            "CPP",
+            "DX",
+            "UE"
+        ],
         "roles": [
             "TECH_DIRECTION",
-            "PROGRAMMER",
-            "RENDERING"
+            "PROGRAMMING",
+            "RENDERING",
+            "RDI"
         ],
         "description": "ENDWI is an immersive story depicting the perception, results and consequences of drunk driving, with state of the art 3D motion capture provided by Microsoft and top of the line graphical fidelity.",
         "references": [],
@@ -26,7 +31,17 @@
         "title": "Cupra Master's Convention",
         "client": "2021-22",
         "year": "Seat",
-        "stacks": [],
+        "stacks": [
+            "CS",
+            "UNITY",
+            "JS",
+            "TS",
+            "NODE",
+            "BASH",
+            "DEBIAN",
+            "GH_ACTIONS",
+            "AWS"
+        ],
         "roles": [
             "VIRTUAL_PRODUCTION",
             "TECH_DIRECTION",
@@ -57,7 +72,16 @@
         "title": "World Bank - China's Great Wall Experience",
         "client": "2020-21",
         "year": "World Bank",
-        "stacks": [],
+        "stacks": [
+            "CPP",
+            "JS",
+            "HTML",
+            "CSS",
+            "DX",
+            "UE",
+            "AWS",
+            "BASH"
+        ],
         "roles": [
             "PROJECT_DIRECTION",
             "PROGRAMMING",
@@ -86,7 +110,13 @@
         "title": "Redbull BC One 2017, Nagoya",
         "client": "2017",
         "year": "Red Bull Group",
-        "stacks": [],
+        "stacks": [
+            "JAVA",
+            "ANDROID",
+            "PYTHON",
+            "SCIKIT",
+            "OPENCV"
+        ],
         "roles": [
             "PROGRAMMING",
             "SETUP",
@@ -112,7 +142,14 @@
         "title": "Sastre Virtual",
         "client": "2017",
         "year": "EY group",
-        "stacks": [],
+        "stacks": [
+            "CPP",
+            "CS",
+            "UNITY",
+            "PYTHON",
+            "OPENCV",
+            "OGL"
+        ],
         "roles": [
             "PROGRAMMING",
             "RENDERING",
@@ -137,7 +174,11 @@
         "title": "A Walk Through Dementia",
         "client": "2018",
         "year": "UK's Alzheimer Research Foundation",
-        "stacks": [],
+        "stacks": [
+            "CS",
+            "UNITY",
+            "OGL"
+        ],
         "roles": [
             "PROGRAMMING",
             "RENDERING"
@@ -159,7 +200,12 @@
         "title": "Modmol",
         "client": "2019",
         "year": "University of Barcelona",
-        "stacks": [],
+        "stacks": [
+            "CS",
+            "UNITY",
+            "ANDROID",
+            "OGL"
+        ],
         "roles": [
             "PROGRAMMING",
             "RENDERING"
@@ -179,7 +225,14 @@
         "title": "Interactive Ping Pong",
         "client": "2018",
         "year": "Barcelona Games World",
-        "stacks": [],
+        "stacks": [
+            "C",
+            "CPP",
+            "PYTHON",
+            "OPENCV",
+            "SCIKIT",
+            "DX"
+        ],
         "roles": [
             "PROGRAMMING",
             "RENDERING",
@@ -205,7 +258,11 @@
         "title": "Unity autoclass interface generator",
         "client": "2018",
         "year": "Internal",
-        "stacks": [],
+        "stacks": [
+            "C",
+            "CPP",
+            "CS"
+        ],
         "roles": [
             "PROGRAMMING",
             "RDI"
@@ -225,7 +282,12 @@
         "title": "Unity Connection Manager",
         "client": "2018",
         "year": "Internal",
-        "stacks": [],
+        "stacks": [
+            "C",
+            "CPP",
+            "CS",
+            "UNITY"
+        ],
         "roles": [
             "PROGRAMMING",
             "RDI"
@@ -247,7 +309,12 @@
         "title": "VR SDK",
         "client": "2015-16",
         "year": "In-house",
-        "stacks": [],
+        "stacks": [
+            "JAVA",
+            "C",
+            "CPP",
+            "ANDROID"
+        ],
         "roles": [
             "PROGRAMMING"
         ],
@@ -267,7 +334,17 @@
         "title": "Telefonica hápticos",
         "client": "2024",
         "year": "La Frontera VR / Telefónica",
-        "stacks": [],
+        "stacks": [
+            "C",
+            "CPP",
+            "KOTLIN",
+            "JAVA",
+            "ANDROID",
+            "TS",
+            "NODE",
+            "BASH",
+            "AWS"
+        ],
         "roles": [
             "PROGRAMMING",
             "ARCHITECTURE",
@@ -292,7 +369,11 @@
         "title": "UVisit",
         "client": "2015",
         "year": "Unknown",
-        "stacks": [],
+        "stacks": [
+            "JAVA",
+            "OGL",
+            "ANDROID"
+        ],
         "roles": [
             "PROGRAMMING",
             "RENDERING"
@@ -313,7 +394,12 @@
         "title": "Laravel Deployment Stack",
         "client": "2023-24",
         "year": "La Frontera VR",
-        "stacks": [],
+        "stacks": [
+            "BASH",
+            "GITHUB_ACTIONS",
+            "AWS",
+            "PHP"
+        ],
         "roles": [
             "ARCHITECTURE",
             "DEVOPS",
@@ -328,7 +414,9 @@
         "title": "Nest JS Generic Controller package.",
         "client": "2023-24",
         "year": "Metacampus SLU",
-        "stacks": [],
+        "stacks": [
+            "TS"
+        ],
         "roles": [
             "PROGRAMMING"
         ],
@@ -341,7 +429,15 @@
         "title": "Twitter Labeling Tool",
         "client": "2023-24",
         "year": "Metacampus SLU",
-        "stacks": [],
+        "stacks": [
+            "TS",
+            "HTML",
+            "CSS",
+            "BASH",
+            "AWS",
+            "PYTHON",
+            "TENSORFLOW"
+        ],
         "roles": [
             "ARCHITECTURE",
             "PROGRAMMING",

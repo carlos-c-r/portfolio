@@ -5,7 +5,9 @@
     "PROJECT_DIRECTION": "Project direction",
     "ARCHITECTURE": "Project architecture",
     "DEVOPS": "DevOps",
-    "SYSADMIN": "Systems Administration",
+    "SYSADMIN": "Systems administration",
     "SETUP": "Event setup",
-    "LIVE_HOST": "Live Hosting"
+    "LIVE_HOST": "Live hosting",
+    "VIRTUAL_PRODUCTION": "Virtual production",
+    "RDI": "Reseach and development"
 }

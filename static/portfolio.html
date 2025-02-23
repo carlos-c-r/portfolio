@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+    <template id="portfolio-entry-section-selector">
+
+    </template>
+
+    <template id="portfolio-entry">
+        <style>
+            :host {
+                display: block;
+                background-size: 100% 100%;
+                color: white;
+
+
+            }
+
+            .container {
+                position: relative;
+            }
+
+            .background {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                /* background-image: url("portfolio/endwi/bg.png"); */
+                filter: grayscale(80%);
+                z-index: -1;
+            }
+
+            .portfolio-entry-stacks {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 2px;
+            }
+
+            .icon-header {
+                vertical-align: middle;
+                display: flex;
+                align-items: center;
+            }
+
+            .icon-header::before {
+                font-family: 'Material Symbols Outlined';
+                font-size: 32px;
+                display: inline-block;
+                margin-right: 6px;
+            }
+
+            .challenges h4::before {
+                content: "warning";
+                color: yellow;
+            }
+
+            .solutions h4::before {
+                content: "build";
+                color: slateblue;
+            }
+
+            .references h4::before {
+                content: "link";
+                color: white;
+            }
+
+            .material-symbols-outlined {
+                font-variation-settings:
+                    'FILL' 0,
+                    'wght' 100,
+                    'GRAD' 0,
+                    'opsz' 20
+            }
+        </style>
+
+        <div class="container">
+            <div class="background"></div>
+            <h1>
+                <slot name="title"></slot>
+            </h1>
+            <h2>
+                <slot name="client"></slot>
+            </h2>
+            <h3>
+                <slot name="role"></slot>
+            </h3>
+            <div class="stacks">
+                <slot name="stacks"></slot>
+            </div>
+            <p class="desc">
+                <slot name="description"></slot>
+            </p>
+            <div class="challenges">
+                <h4 class="icon-header">The challenges</h4>
+                <ul>
+                    <slot name="challenges"></slot>
+                </ul>
+            </div>
+            <div class="solutions">
+                <h4 class="icon-header">The solutions</h4>
+                <ul>
+                    <slot name="solutions"></slot>
+                </ul>
+            </div>
+            <div class="references">
+                <h4 class="icon-header">References</h4>
+                <ul>
+                    <slot name="references"></slot>
+                </ul>
+            </div>
+        </div>
+
+    </template>
+
+    <template id="f-b">
+        <style>
+            :host {
+                display: inline-flex;
+                align-items: center;
+                gap: 2px;
+                cursor: pointer;
+                user-select: none;
+                border: 1px solid black;
+                border-radius: 8px;
+                padding: 0px 4px 0px;
+            }
+
+            :host([selected]) {
+                border: 1px solid green;
+            }
+
+            :host([unclickable]) {
+                border: 1px solid green;
+                pointer-events: none;
+            }
+
+            .fb-icon,
+            .fb-label {
+                pointer-events: none;
+            }
+
+            span.fb-icon {
+                font-size: 24px;
+                margin-top: 2px;
+            }
+        </style>
+        <span class="fb-icon">
+            <slot name="icon"></slot>
+        </span>
+        <span class="fb-label">
+            <slot name="label">asdf</slot>
+        </span>
+    </template>
+
+    <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+
+    <style>
+        @keyframes inflate {
+            from {
+                width: 200px;
+            }
+
+            to {
+                width: 400px;
+            }
+        }
+
+        .expandable {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+
+        .expandable:hover {
+            width: 400px;
+            height: 300px;
+            animation-name: inflate;
+            animation-duration: 1s;
+        }
+    </style>
+
+    <div style="height: 400px;">
+        <div class="expandable">
+
+        </div>
+    </div>
+
+    <div id="filters">
+        <!--populated from js-->
+    </div>
+
+
+    <div id="portfolio">
+        <!--populated from js-->
+    </div>
+
+
+    <script type="module" src="./portfolio.js"></script>
+</body>
+
+</html>

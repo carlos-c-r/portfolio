@@ -25,5 +25,7 @@
     "GH_ACTIONS": "Github Actions",
     "SQL": "SQL/Postgres",
     "REDIS": "Redis",
-    "ANDROID": "Android"
+    "ANDROID": "Android",
+    "DEBIAN": "Debian",
+    "RHEL": "RHEL"
 }
