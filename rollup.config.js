@@ -3,18 +3,20 @@ import json from '@rollup/plugin-json';
 import copy from 'rollup-plugin-copy';
 import sass from 'rollup-plugin-sass';
 import scss from 'rollup-plugin-scss';
+import nodeResolve from "@rollup/plugin-node-resolve";
 
 import fg from 'fast-glob';
 
 
 export default {
-    input: ['src/portfolio.ts', 'src/main.scss'],
+    input: ['src/main.ts', 'src/main.scss'],
     output: {
         dir: 'output',
         format: 'esm',
     },
     plugins: [
-        typescript(),
+        nodeResolve(),
+        typescript({sourceMap: true, inlineSourceMap: true}),
         json(),
         copy({
             targets: [
@@ -32,8 +34,10 @@ export default {
         },
         sass({
             output: "./output/css/style.css",
-            failOnError: true,
+            failOnError: false,
+            
         }),
     ],
+    sourceMap: true
 
 };

@@ -2,41 +2,41 @@
     "languages": {
         "C": { "start": 1995, "end": 2025, "rating": 5 },      
         "CPP": { "start": 1997, "end": 2025, "rating": 5 },     
-        "CS": { "start": 2013, "end": 2025, "rating": 5 },      
-        "JAVA": { "start": 2009, "end": 2025, "rating": 5 },    
-        "KOTLIN": { "start": 2022, "end": 2025, "rating": 5 },  
+        "CS": { "start": 2013, "end": 2025, "rating": 4 },      
+        "JAVA": { "start": 2009, "end": 2025, "rating": 4 },    
+        "KOTLIN": { "start": 2022, "end": 2025, "rating": 3 },  
         "JS": { "start": 2004, "end": 2025, "rating": 5 },      
-        "TS": { "start": 2021, "end": 2025, "rating": 5 },      
+        "TS": { "start": 2021, "end": 2025, "rating": 4 },      
         "NODE": { "start": 2015, "end": 2025, "rating": 5 },    
-        "PHP": { "start": 2004, "end": 2025, "rating": 5 },     
-        "PYTHON": { "start": 2007, "end": 2025, "rating": 5 },  
-        "BASH": { "start": 1997, "end": 2025, "rating": 5 },    
-        "LISP": { "start": 2012, "end": 2014, "rating": 5 },    
-        "HTML": { "start": 2000, "end": 2025, "rating": 5 },    
-        "CSS": { "start": 2000, "end": 2025, "rating": 5 },     
+        "PHP": { "start": 2004, "end": 2025, "rating": 3 },     
+        "PYTHON": { "start": 2007, "end": 2025, "rating": 4 },  
+        "BASH": { "start": 1997, "end": 2025, "rating": 4 },    
+        "LISP": { "start": 2012, "end": 2014, "rating": 1 },    
+        "HTML": { "start": 2000, "end": 2025, "rating": 3 },    
+        "CSS": { "start": 2000, "end": 2025, "rating": 3 },     
         "HLSL/GLSL/WGSL": { "start": 2004, "end": 2025, "rating": 5 }
     },
     "engines": {
         "UE": { "start": 2011, "end": 2025, "rating": 5 },      
         "UNITY": { "start": 2015, "end": 2025, "rating": 5 },   
-        "GODOT": { "start": 2017, "end": 2019, "rating": 5 },   
-        "THREEJS": { "start": 2017, "end": 2025, "rating": 5 } 
+        "GODOT": { "start": 2017, "end": 2019, "rating": 2 },   
+        "THREEJS": { "start": 2017, "end": 2025, "rating": 2 } 
     },
     "frameworks": {
         "OPENCV": { "start": 2007, "end": 2023, "rating": 5 },     
-        "TENSORFLOW": { "start": 2019, "end": 2025, "rating": 5 }, 
-        "SCIKIT": { "start": 2010, "end": 2025, "rating": 5 },     
-        "CUDA": { "start": 2022, "end": 2023, "rating": 5 },       
-        "CMAKE": { "start": 2010, "end": 2025, "rating": 5 },      
-        "QT": { "start": 2007, "end": 2025, "rating": 5 },         
-        "MATLAB": { "start": 2005, "end": 2017, "rating": 5 },     
-        "NUKE": { "start": 2019, "end": 2022, "rating": 5 },       
-        "FFMPEG": { "start": 2003, "end": 2025, "rating": 5 },     
+        "TENSORFLOW": { "start": 2019, "end": 2025, "rating": 2 }, 
+        "SCIKIT": { "start": 2010, "end": 2025, "rating": 3 },     
+        "CUDA": { "start": 2022, "end": 2023, "rating": 2 },       
+        "CMAKE": { "start": 2010, "end": 2025, "rating": 4 },      
+        "QT": { "start": 2007, "end": 2025, "rating": 3 },         
+        "MATLAB": { "start": 2005, "end": 2017, "rating": 3 },     
+        "NUKE": { "start": 2019, "end": 2022, "rating": 1 },       
+        "FFMPEG": { "start": 2003, "end": 2025, "rating": 4 },     
         "WEBRTC": { "start": 2015, "end": 2025, "rating": 5 },     
         "DX": { "start": 2004, "end": 2025, "rating": 5 },         
         "OGL": { "start": 2003, "end": 2025, "rating": 5 },        
-        "ANGULAR": { "start": 2023, "end": 2025, "rating": 5 },    
-        "VUE": { "start": 2023, "end": 2024, "rating": 5 }       
+        "ANGULAR": { "start": 2023, "end": 2025, "rating": 3 },    
+        "VUE": { "start": 2023, "end": 2024, "rating": 2 }       
     }
     
 }

@@ -17,7 +17,7 @@ interface PortfolioEntryData {
     references: string[],
 }
 
-const projects = projectsData as unknown as { [key: string]: PortfolioEntryData }; 
+const projects = projectsData as unknown as { [key: string]: PortfolioEntryData };
 const stackIcons = stackIconsData as unknown as { [key: string]: string };
 const stacks = stacksData as unknown as { [key: string]: string };
 const roles = rolesData as unknown as { [key: string]: string };
@@ -70,7 +70,7 @@ export class PortfolioEntry extends HTMLElement {
         this.root.host.appendChild(roleSlot);
 
         for (const s of projects[id].stacks) {
-            const chip = FilterButton.make(stackIcons[s] || s, stacks[s]);
+            const chip = FilterButton.make(stackIcons[s] || '', stacks[s]);
             chip.setAttribute("slot", "stacks");
             chip.setAttribute("selected", "");
             chip.setAttribute('unclickable', '');
@@ -94,8 +94,12 @@ export class PortfolioEntry extends HTMLElement {
             this.root.host.appendChild(elm);
         }
 
+        const refContainer = document.createElement('div');
+        refContainer.setAttribute('slot', 'references');
+        this.root.host.appendChild(refContainer);
+
         for (const c of projects[id].references) {
-            const elm = document.createElement('li');
+            const elm = document.createElement('div');
             if (c.includes('youtube.com')) {
                 elm.innerHTML = `
                 <iframe width="420" height="315"
@@ -106,12 +110,12 @@ export class PortfolioEntry extends HTMLElement {
             else {
                 elm.textContent = c;
             }
-            elm.setAttribute('slot', 'references');
+            //elm.setAttribute('slot', 'references');
 
-            this.root.host.appendChild(elm);
+            refContainer.appendChild(elm);
         }
 
-        
+
         this.root.querySelector('.background').style.backgroundImage = `url("portfolio/${id}/bg.png")`;
     }
 }

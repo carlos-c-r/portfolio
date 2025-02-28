@@ -24,7 +24,8 @@ export class FilterButton extends HTMLElement {
 
         const elm = document.createElement("filter-button");
         const i = document.createElement("i");
-        i.classList.add(`devicon-${icon}-plain`, "colored");
+        //console.log(icon);
+        if (icon) i.classList.add(`devicon-${icon}-plain`, "colored");
         i.setAttribute("slot", "icon");
         const l = document.createElement("span");
         l.textContent = label;

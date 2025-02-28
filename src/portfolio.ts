@@ -1,6 +1,7 @@
 import { FilterButton } from './filter-button.js';
 import './portfolio-entry.js';
 import stacksData from './data/stacks.json' with { type: "json" };
+import stackIconsData from './data/stackicons.json' with { type: "json" };
 import projectsData from './data/projects.json' with { type: "json" };
 
 // import './main.scss';
@@ -8,8 +9,10 @@ import projectsData from './data/projects.json' with { type: "json" };
 const projects = Object.assign({}, projectsData) as { [key: string]: any };
 for (const k in projects) projects[k].domElement = document.querySelector(`#${k}`);
 
+const stackIcons = stackIconsData as unknown as { [key: string]: string };
 
-const parent = document.querySelector('#portfolio') as HTMLElement;
+const parent = document.querySelector('#portfolio-entries') as HTMLElement;
+console.log(parent)
 
 for (const [k, project] of Object.entries(projects)) {
     const elm = document.createElement("portfolio-entry");
@@ -41,7 +44,7 @@ const filterParent = document.querySelector('#filters') as HTMLElement;
 
 for (const [stackKey, label] of Object.entries(stacksData)) {
 
-    let filter = FilterButton.make("", label);
+    let filter = FilterButton.make(stackIcons[stackKey], label);
     filter.addEventListener('click', ev => {
 
         filterMask.set(stackKey, (ev?.target as any).selected || false);   
