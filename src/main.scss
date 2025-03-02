@@ -154,10 +154,9 @@ input[type="radio"]:checked+.page {
     max-width: 100%;
     width: 500px;
     margin: 0 auto;
-    padding: 16px 0;
-    background-color: #00000044;
-
-    padding: 16px;
+    padding: 16px 4em;
+    background-color: black;
+    mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
 }
 
 #page-portfolio {
@@ -209,20 +208,59 @@ input[type="radio"]:checked+.page {
 
 #skills-entries li {
     list-style-type: none;
+    display: grid;
+    grid-template-columns: 2em 1fr 100px auto; 
+    grid-template-rows: 1fr; 
+    align-items: center;
+    gap: 2px;
+    margin: 1px 0;
 }
 
-.skill-years, .skill-rating {
-    margin-left: 2px;
+.skill-icon {
+    font-size: 1.5em;
+}
+
+.skill-label {
+    flex-grow: 1;
 }
 
 .skill-rating {
-    font-family: "Material Symbols Outlined";
+    // font-family: "Material Symbols Outlined";
     // font-size: 24px;
     color: yellow;
-    letter-spacing: 2px;
 }
 
 .skill-rating-empty {
     color: grey;
 }
 
+#history-page {
+    display: flex;
+    align-items: center;
+}
+
+#history-gradient {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-self: stretch;
+    gap: 2px;
+}
+
+#history-gradient div {
+    width: 16px;
+    background: linear-gradient(0deg, red, green, red);
+    flex-grow: 1;
+}
+
+.history-job:hover {
+    background: rgb(66, 70, 86);
+}
+
+.job-years {
+    margin-right: 4px;
+}
+
+.job-years:after {
+    content:':';
+}

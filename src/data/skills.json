@@ -14,13 +14,13 @@
         "LISP": { "start": 2012, "end": 2014, "rating": 1 },    
         "HTML": { "start": 2000, "end": 2025, "rating": 3 },    
         "CSS": { "start": 2000, "end": 2025, "rating": 3 },     
-        "HLSL/GLSL/WGSL": { "start": 2004, "end": 2025, "rating": 5 }
+        "XSL": { "start": 2004, "end": 2025, "rating": 5 }
     },
     "engines": {
         "UE": { "start": 2011, "end": 2025, "rating": 5 },      
         "UNITY": { "start": 2015, "end": 2025, "rating": 5 },   
         "GODOT": { "start": 2017, "end": 2019, "rating": 2 },   
-        "THREEJS": { "start": 2017, "end": 2025, "rating": 2 } 
+        "THREE": { "start": 2017, "end": 2025, "rating": 2 } 
     },
     "frameworks": {
         "OPENCV": { "start": 2007, "end": 2023, "rating": 5 },     

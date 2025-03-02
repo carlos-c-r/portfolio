@@ -22,26 +22,30 @@ function createStacks() {
             const icon = document.createElement('i');
             icon.setAttribute('name', stackIcons[e] || 'c');
             const label = document.createElement('span');
-            icon.classList.add(`devicon-${stackIcons[e]}-plain`, "colored");
+            icon.classList.add(`devicon-${stackIcons[e]}-plain`, "colored", "skill-icon");
             label.classList.add('skill-label');
             const years = document.createElement('span');
             years.classList.add('skill-years');
             const rating = document.createElement('span');
             const rating_empty = document.createElement('span');
+            const rating_all = document.createElement('span');
+            
             rating.classList.add('skill-rating');
             rating_empty.classList.add('skill-rating', 'skill-rating-empty');
             label.textContent = stacks[e] || '';
             years.textContent = `${info.start} - ${info.end}`;
-            rating.textContent = new Array(info.rating).fill('star').join(' ');
-            rating_empty.textContent = new Array(5 - info.rating).fill('star').join(' ');
+            rating.textContent = new Array(info.rating).fill('★').join('');
+            rating_empty.textContent = new Array(5 - info.rating).fill('☆').join('');
 
             elm.appendChild(icon);
             elm.appendChild(label);
             elm.appendChild(years);
-            elm.appendChild(rating);
-            elm.appendChild(rating_empty);
+            elm.appendChild(rating_all);
 
-            elm.addEventListener('hover', ev => lol(label.textContent || '', info.start, info.end, info.rating));
+            rating_all.appendChild(rating);
+            rating_all.appendChild(rating_empty);
+
+            elm.addEventListener('mouseover', ev => lol(label.textContent || '', info.start, info.end, info.rating));
             elm.addEventListener('click', ev => lol(label.textContent || '', info.start, info.end, info.rating));
 
             parent?.appendChild(elm);

@@ -27,5 +27,12 @@
     "REDIS": "redis",
     "ANDROID": "android",
     "DEBIAN": "debian",
-    "RHEL": "redhat"
+    "RHEL": "redhat",
+    "MATLAB": "matlab",
+    "ANGULAR": "angular",
+    "VUE": "vue",
+    "GODOT": "godot",
+    "XSL": "opengl",
+    "QT": "qt",
+    "LISP": "lisp"
 }
