@@ -13,12 +13,12 @@ for (const e of entries) {
     let ep = (end - rangeStart) / (rangeEnd - rangeStart);
 
     let stops = [
-        'red 0%',
-        `red ${Math.max(sp * 100 - 2, 0)}%`,
-        `green ${sp <= 0 ? 0 : sp * 100 + 2}%`,
-        `green ${ep >= 1 ? 100 : ep * 100 - 2}%`,
-        `red ${Math.min(ep * 100 + 2, 100)}%`,
-        'red 100%'
+        'var(--secondary-bg-color) 0%',
+        `var(--secondary-bg-color) ${Math.max(sp * 100 - 2, 0)}%`,
+        `var(--accent-fg-color) ${sp <= 0 ? 0 : sp * 100 + 2}%`,
+        `var(--accent-fg-color) ${ep >= 1 ? 100 : ep * 100 - 2}%`,
+        `var(--secondary-bg-color) ${Math.min(ep * 100 + 2, 100)}%`,
+        'var(--secondary-bg-color) 100%'
     ];
 
     e.addEventListener('mouseover', ev => {

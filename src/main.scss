@@ -4,7 +4,14 @@
 // // Optional Theme Stylesheet
 // @import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
 
+:root {
+    --primary-bg-color: #000000;
+    --secondary-bg-color: #333333;
+    --primary-fg-color: white;
+    --accent-fg-color: cyan;
+    --accent-bg-color: purple;
 
+}
 
 html {
     height: 100%;
@@ -26,7 +33,7 @@ body {
     background-color: darkslategray;
     background: url("../img/bg.jpg");
     background-repeat: repeat;
-    color: aquamarine;
+    color: var(--primary-fg-color);
 }
 
 #background-mask {
@@ -38,7 +45,7 @@ body {
     left: 0;
     top: 0;
     /* background-color: linear-gradient(black, #00000000); */
-    background: linear-gradient(black,transparent); 
+    background: linear-gradient(black, transparent);
 }
 
 label,
@@ -81,8 +88,9 @@ label.nav {
     justify-content: center;
     cursor: pointer;
     border-bottom: 2px solid #67bfdd;
-    background: #212526;
+    background: var(--accent-bg-color);
     user-select: none;
+    color: var(--accent-fg-color);
     transition: background 0.4s, padding-left 0.2s;
     padding-left: 0;
 
@@ -161,11 +169,18 @@ input[type="radio"]:checked+.page {
 
 #page-portfolio {
     width: 90%;
+
+
 }
 
-.icon-header {
-    
+#filters {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2px;
 }
+
+.icon-header {}
 
 .language-timeline {
     display: flex;
@@ -185,7 +200,8 @@ input[type="radio"]:checked+.page {
     padding: 0;
 }
 
-.language-name, .language-rating {
+.language-name,
+.language-rating {
     text-align: center;
 }
 
@@ -198,7 +214,8 @@ input[type="radio"]:checked+.page {
     color: yellow;
 }
 
-.language-timeline-start, .language-timeline-end {
+.language-timeline-start,
+.language-timeline-end {
     position: absolute;
     margin: 0;
     padding: 0;
@@ -209,8 +226,8 @@ input[type="radio"]:checked+.page {
 #skills-entries li {
     list-style-type: none;
     display: grid;
-    grid-template-columns: 2em 1fr 100px auto; 
-    grid-template-rows: 1fr; 
+    grid-template-columns: 2em 1fr 100px auto;
+    grid-template-rows: 1fr;
     align-items: center;
     gap: 2px;
     margin: 1px 0;
@@ -239,6 +256,22 @@ input[type="radio"]:checked+.page {
     align-items: center;
 }
 
+#history-content {
+    background: green;
+    mask:
+        linear-gradient(to bottom, black, transparent) bottom / 100% 51%,
+        linear-gradient(to top, red, transparent) top / 100% 51%
+    ;
+    mask-repeat: no-repeat;
+
+    // mask:
+    //     linear-gradient(to top, transparent, #fff) top / 100% 20%,
+    //     linear-gradient(to bottom, transparent, #fff) bottom/100% 20%,
+    //     linear-gradient(to left, transparent, #fff) left /20% 100%,
+    //     linear-gradient(to right, transparent, #fff) right /20% 100%;
+    // mask-repeat: no-repeat;
+}
+
 #history-gradient {
     display: flex;
     align-items: center;
@@ -262,5 +295,46 @@ input[type="radio"]:checked+.page {
 }
 
 .job-years:after {
-    content:':';
+    content: ':';
+}
+
+.tab-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-bottom: 2px solid #67bfdd;
+    background: var(--accent-bg-color);
+    user-select: none;
+    color: var(--accent-fg-color);
+    transition: background 0.4s, padding-left 0.2s;
+    padding-left: 0;
+
+    input[type="radio"]:checked+.page+& {
+        background: #545f75;
+        color: #ffffff;
+        padding-left: 20px;
+
+        span {
+            padding-left: 20px
+        }
+
+        .nav-icon {
+            opacity: 1;
+        }
+    }
+
+    span {
+        padding-left: 0px;
+        position: relative;
+    }
+
+    .nav-icon {
+        // left: 0;
+        // top: -3px;
+        // position: absolute;
+        // width: 15px;
+        opacity: 0;
+        transition: opacity 0.2s;
+    }
 }
