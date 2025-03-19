@@ -1,6 +1,11 @@
+
 import './portfolio.js';
 import './skills.js';
 import './history.js';
-import Glide from '@glidejs/glide'
 
-new Glide('.glide').mount();
+const hexaGrid = document.querySelector('#hexa-grid')!;
+for(let i = 0; i < 450; i++) {
+    const hex = document.createElement('div');
+    hexaGrid.appendChild(hex);
+    if (Math.random() < 0.1)  hex.classList.add('hexa-anim-1');
+}

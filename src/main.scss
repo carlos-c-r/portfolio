@@ -4,6 +4,9 @@
 // // Optional Theme Stylesheet
 // @import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
 
+
+@use 'hexa.scss';
+
 :root {
     --primary-bg-color: #000000;
     --secondary-bg-color: #333333;
@@ -34,6 +37,8 @@ body {
     background: url("../img/bg.jpg");
     background-repeat: repeat;
     color: var(--primary-fg-color);
+
+    overflow-x: hidden;
 }
 
 #background-mask {
@@ -47,6 +52,7 @@ body {
     /* background-color: linear-gradient(black, #00000000); */
     background: linear-gradient(black, transparent);
 }
+
 
 label,
 a {
@@ -260,8 +266,7 @@ input[type="radio"]:checked+.page {
     background: green;
     mask:
         linear-gradient(to bottom, black, transparent) bottom / 100% 51%,
-        linear-gradient(to top, red, transparent) top / 100% 51%
-    ;
+        linear-gradient(to top, red, transparent) top / 100% 51%;
     mask-repeat: no-repeat;
 
     // mask:
@@ -338,3 +343,5 @@ input[type="radio"]:checked+.page {
         transition: opacity 0.2s;
     }
 }
+
+

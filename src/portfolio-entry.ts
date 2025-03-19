@@ -1,8 +1,6 @@
 import projectsData from './data/projects.json' with { type: "json" };
-import stackIconsData from './data/stackicons.json' with { type: "json" };
 import stacksData from './data/stacks.json' with { type: "json" };
 import rolesData from './data/roles.json' with { type: "json" };
-import { FilterButton } from './filter-button.js';
 
 
 interface PortfolioEntryData {
@@ -18,7 +16,6 @@ interface PortfolioEntryData {
 }
 
 const projects = projectsData as unknown as { [key: string]: PortfolioEntryData };
-const stackIcons = stackIconsData as unknown as { [key: string]: string };
 const stacks = stacksData as unknown as { [key: string]: string };
 const roles = rolesData as unknown as { [key: string]: string };
 
@@ -70,10 +67,11 @@ export class PortfolioEntry extends HTMLElement {
         this.root.host.appendChild(roleSlot);
 
         for (const s of projects[id].stacks) {
-            const chip = FilterButton.make(stackIcons[s] || '', stacks[s]);
+            console.log(projects[id].title, s, stacks[s])
+            const chip =  document.createElement('filter-chip')
+            chip.setAttribute("name", s)
             chip.setAttribute("slot", "stacks");
-            chip.setAttribute("selected", "");
-            chip.setAttribute('unclickable', '');
+            chip.toggleAttribute("disabled");
 
             this.root.host.appendChild(chip);
         }

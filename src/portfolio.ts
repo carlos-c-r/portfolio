@@ -1,4 +1,4 @@
-import { FilterButton } from './filter-button.js';
+import { Chip } from './chip.js';
 import './portfolio-entry.js';
 import stacksData from './data/stacks.json' with { type: "json" };
 import stackIconsData from './data/stackicons.json' with { type: "json" };
@@ -44,10 +44,11 @@ const filterParent = document.querySelector('#filters') as HTMLElement;
 
 for (const [stackKey, label] of Object.entries(stacksData)) {
 
-    let filter = FilterButton.make(stackIcons[stackKey], label);
-    filter.addEventListener('click', ev => {
+    let filter = document.createElement('filter-chip');
+    filter.setAttribute('name', stackKey);
+    filter.addEventListener('change', (ev: any) => {
 
-        filterMask.set(stackKey, (ev?.target as any).selected || false);   
+        filterMask.set(stackKey, ev.detail.checked || false);   
 
         for (const projectKey of stacksProjectMap[stackKey] || []) {
             if (checkMaskForAny(filterMask, ...projects[projectKey].stacks)) {
@@ -57,6 +58,8 @@ for (const [stackKey, label] of Object.entries(stacksData)) {
                 projectsDomMap[projectKey].classList.add('hidden');
             }
         }
+
+        
     });
 
     filterParent.appendChild(filter);

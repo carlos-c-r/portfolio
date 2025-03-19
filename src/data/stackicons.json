@@ -13,10 +13,8 @@
     "NODE": "nodejs",
     "UE": "unrealengine",
     "UNITY": "unity",
-    "THREE": "threejs",
     "OPENCV": "opencv",
-    "TENSORFLOW": "tensorflow",
-    "SCIKIT": "scikit",
+    "SCIKIT": "scikitlearn",
     "DX": "directx",
     "OGL": "opengl",
     "AWS": "amazonwebservices",
@@ -30,9 +28,8 @@
     "RHEL": "redhat",
     "MATLAB": "matlab",
     "ANGULAR": "angular",
-    "VUE": "vue",
+    "VUE": "vuejs",
     "GODOT": "godot",
     "XSL": "opengl",
-    "QT": "qt",
-    "LISP": "lisp"
+    "QT": "qt"
 }

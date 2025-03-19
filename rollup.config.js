@@ -3,18 +3,23 @@ import json from '@rollup/plugin-json';
 import copy from 'rollup-plugin-copy';
 import sass from 'rollup-plugin-sass';
 import scss from 'rollup-plugin-scss';
+import html from 'rollup-plugin-html';
 import nodeResolve from "@rollup/plugin-node-resolve";
 
 import fg from 'fast-glob';
 
 
 export default {
-    input: ['src/main.ts', 'src/main.scss'],
+
+    input: ['src/main.ts', 'src/main.scss', 'src/components.ts'],
     output: {
         dir: 'output',
         format: 'esm',
+        sourcemap: true,
     },
     plugins: [
+        
+        html({ include: 'src/templates/**/*.html' }),
         nodeResolve(),
         typescript({sourceMap: true, inlineSourceMap: true}),
         json(),
@@ -37,7 +42,6 @@ export default {
             failOnError: false,
             
         }),
-    ],
-    sourceMap: true
+    ]
 
 };

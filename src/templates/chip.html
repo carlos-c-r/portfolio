@@ -1,0 +1,47 @@
+<style>
+
+    
+
+    #checkbox {
+        appearance: none;
+        margin: 0;
+        padding: 0px;
+        vertical-align: middle;
+    }
+
+    #checkbox:checked {
+        appearance: none;
+    }
+    
+    #checkbox + label {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        border: 1px solid white;
+        border-radius: 1em;
+        padding: 0.25em 0.5em;  
+        font-size: 1em;
+        line-height: 1em;
+    }
+
+    #checkbox:checked + label {
+        border: 1px solid green;
+    }
+
+    label * {
+        pointer-events: none;
+        user-select: none;
+    }
+
+    label:has(i) {
+        gap: 0px;
+    }
+
+
+</style>
+
+<input id="checkbox" type="checkbox" name="a" value="b" checked />
+<label for="checkbox">
+    <slot name="icon"></slot>
+    <slot name="label">Label</slot>
+</label>
