@@ -34,8 +34,8 @@ body {
     font-variation-settings: "wdth" 100;
 
     background-color: darkslategray;
-    background: url("../img/bg.jpg");
-    background-repeat: repeat;
+    // background: url("../img/bg.jpg");
+    // background-repeat: repeat;
     color: var(--primary-fg-color);
 
     overflow-x: hidden;
@@ -47,6 +47,7 @@ body {
     height: 100%;
     left: 0;
     top: 0;
+    // mask-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.9));
 }
 
 #background-mask {

@@ -59,7 +59,7 @@ export function buildProgramInfo(gl: WebGLRenderingContext, shaderProgram: WebGL
     };
 
     for (const x of vsSource.matchAll(/\s*attribute\s+[a-z0-9\[\]]+\s+([a-zA-Z0-9_)]+);/g)) {
-        console.log(x[1], gl.getAttribLocation(shaderProgram, x[1]));
+        //console.log(x[1], gl.getAttribLocation(shaderProgram, x[1]));
         info.attribLocations[x[1]] = gl.getAttribLocation(shaderProgram, x[1]);
     }
 
@@ -71,7 +71,7 @@ export function buildProgramInfo(gl: WebGLRenderingContext, shaderProgram: WebGL
         info.uniformLocations[x[1]] = gl.getUniformLocation(shaderProgram, x[1]);
     }
 
-    console.log(info);
+    //console.log(info);
     return info;
 }
 

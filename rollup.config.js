@@ -4,12 +4,14 @@ import copy from 'rollup-plugin-copy';
 import sass from 'rollup-plugin-sass';
 import scss from 'rollup-plugin-scss';
 import html from 'rollup-plugin-html';
+import webWorkerLoader from 'rollup-plugin-web-worker-loader';
 import nodeResolve from "@rollup/plugin-node-resolve";
 
 import fg from 'fast-glob';
 
 
 export default {
+
 
     input: ['src/main.ts', 'src/main.scss', 'src/components.ts'],
     output: {
@@ -20,7 +22,10 @@ export default {
     plugins: [
         
         html({ include: 'src/templates/**/*.html' }),
-        nodeResolve(),
+        webWorkerLoader(),
+        nodeResolve({
+            browser: true
+        }),
         typescript({sourceMap: true, inlineSourceMap: true}),
         json(),
         copy({
