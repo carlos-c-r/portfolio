@@ -18,3 +18,9 @@ function removeExtension(s: string) {
     if (idx < 0) return s;
     return s.substring(0, idx);
 }
+
+document.addEventListener('keyup', ev => {
+    if (ev.key == 'a') {
+        document.dispatchEvent(new CustomEvent('set-icon', { detail: 'cog' }));
+    }
+})

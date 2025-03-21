@@ -1,30 +1,15 @@
-const gradient = document.querySelector('#history-gradient div')! as HTMLDivElement;
-const entries = document.querySelectorAll('.history-job') as unknown as HTMLElement[];
+for (const elm of document.querySelectorAll('.timelined') as Iterable<HTMLElement>) {
 
-const rangeStart = 1995;
-const rangeEnd = 2025;
+    const begin = parseInt(elm.getAttribute("timeline-start") || '') || 2004;
+    const end = parseInt(elm.getAttribute("timeline-end") || '') || 2025;
+    const from = parseInt(elm.getAttribute("from") || '') || 2004;
+    const to = parseInt(elm.getAttribute("to") || '') || 2025;
+    const sp = (from - begin) / (end - begin) * 100;
+    const ep = (to - begin) / (end - begin) * 100;
 
+    elm.style.backgroundColor = `linear-gradient(to right, var(--accent-fg-disabled-color) ${sp - 2}%, var(--accent-fg-color) ${sp + 2}%, var(--accent-fg-color) ${ep - 2}%, var(--accent-fg-disabled-color) ${ep + 2}%)`;
 
-for (const e of entries) {
+    //elm.style.backgroundColor = 'red';
 
-    const [start, end] = e.querySelector('.job-years')?.textContent?.split('-')?.map(x => parseInt(x)) || [rangeStart, rangeEnd];
-
-    let sp = (start - rangeStart) / (rangeEnd - rangeStart);
-    let ep = (end - rangeStart) / (rangeEnd - rangeStart);
-
-    let stops = [
-        'var(--secondary-bg-color) 0%',
-        `var(--secondary-bg-color) ${Math.max(sp * 100 - 2, 0)}%`,
-        `var(--accent-fg-color) ${sp <= 0 ? 0 : sp * 100 + 2}%`,
-        `var(--accent-fg-color) ${ep >= 1 ? 100 : ep * 100 - 2}%`,
-        `var(--secondary-bg-color) ${Math.min(ep * 100 + 2, 100)}%`,
-        'var(--secondary-bg-color) 100%'
-    ];
-
-    e.addEventListener('mouseover', ev => {
-        console.log(sp, ep, start, end);
-        gradient.style.background = `linear-gradient(180deg, ${stops.join(',')})`
-    });
-
-    console.log(e, start, end, sp, ep)
+    console.log(elm, begin, end, from, to, sp, ep, elm.style.backgroundColor);
 }

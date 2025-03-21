@@ -1,4 +1,6 @@
 import { mat4, vec3 } from "gl-matrix";
+import random from 'random';
+
 import { buildProgramInfo, initShaderProgram, resizeCanvasToDisplaySize } from "./main.js";
 import { Scene } from "./scene.js";
 
@@ -7,9 +9,12 @@ import textures from "../textures.js";
 
 const cog = textures['cog'];
 
+
+const uniform = random.uniform();
+
 export class InstancedHexagons implements Scene {
 
-    STRIDE = 16;
+    STRIDE = 17;
     HEX_RADIUS = 0.03;
 
     buf: Float32Array;
@@ -29,7 +34,7 @@ export class InstancedHexagons implements Scene {
 
     ext: any;
 
-    texture: WebGLTexture;
+    texture: WebGLTexture = -1;
     textureData = cog.data;
     texWidth: number = cog.width;
     texHeight: number = cog.height;
@@ -61,12 +66,25 @@ export class InstancedHexagons implements Scene {
             this.mouseCoords[1] = -ev.clientY / this.canvas.clientHeight * 2.0 + 1.0;
         })
 
+        //@ts-ignore
+        document.addEventListener('set-icon', (ev: any) => {
+            if (!this.gl.isTexture(this.texture)) return;
+            const icon = ev.detail;
+            if (textures[icon]) {
+                this.texWidth = textures[icon].width;
+                this.texHeight = textures[icon].height;
+                this.textureData = textures[icon].data;
+
+                gl.bindTexture(gl.TEXTURE_2D, this.texture);
+                gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, this.texWidth, this.texHeight, 0, gl.RGBA, gl.UNSIGNED_BYTE, this.textureData);
+            }
+        });
+
         this.buf = new Float32Array(nInstances * this.STRIDE);
         this.ts = Date.now();
 
         this.rotationSpeeds = Array.from({ length: nInstances }, (x, i) => Math.random() - 0.5);
         this.matrices = new Array(nInstances);
-
 
         
         const grid = createHexGrid(nInstances, this.HEX_RADIUS, 1.0);
@@ -91,6 +109,9 @@ export class InstancedHexagons implements Scene {
 
             this.buf.set(m, i * this.STRIDE);
             this.matrices[i] = m;
+
+            const showTex = uniform() < 0.1 ? 1.0 : 0.0;
+            this.buf.set([ showTex ], i * this.STRIDE + 16);
         }
 
         const vsSource = this.vs();
@@ -99,7 +120,7 @@ export class InstancedHexagons implements Scene {
         this.shaderProgram = initShaderProgram(gl, vsSource, fsSource);
 
         this.programInfo = buildProgramInfo(gl, this.shaderProgram, vsSource, fsSource);
-
+        console.log(this.programInfo);
 
         const positionBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
@@ -113,16 +134,15 @@ export class InstancedHexagons implements Scene {
         this.buffers = { position: positionBuffer, matrices: matrixBuffer };
 
 
-
-
         this.texture = gl.createTexture()!;
+        console.log(this.texture)
         gl.bindTexture(gl.TEXTURE_2D, this.texture);
         
 
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
 
-        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, this.texWidth, this.texHeight, 0, gl.RGBA, gl.UNSIGNED_BYTE, this.textureData);
+        //gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, this.texWidth, this.texHeight, 0, gl.RGBA, gl.UNSIGNED_BYTE, this.textureData);
     }
 
     update() {
@@ -178,7 +198,7 @@ export class InstancedHexagons implements Scene {
 
         
         //mat4 takes 4 attribute locations
-        const bytesPerMatrix = 4 * 16;
+
         for (let i = 0; i < 4; ++i) {
             const loc = this.programInfo.attribLocations['matrix'] + i;
             this.gl.enableVertexAttribArray(loc);
@@ -189,13 +209,17 @@ export class InstancedHexagons implements Scene {
                 4,                // values to pull for each vertex
                 this.gl.FLOAT,    // type
                 false,            // normalize
-                bytesPerMatrix,   // stride
+                this.STRIDE * 4,      // stride
                 offset,           // offset
             );
 
             // this line says this attribute only changes for each 1 instance
             this.ext.vertexAttribDivisorANGLE(loc, 1);
         }
+
+        this.gl.enableVertexAttribArray(this.programInfo.attribLocations['showTex']);
+        this.gl.vertexAttribPointer(this.programInfo.attribLocations['showTex'], 1, this.gl.FLOAT, false, this.STRIDE * 4, 64);
+        this.ext.vertexAttribDivisorANGLE(this.programInfo.attribLocations['showTex'], 1);
 
         {
             const vertexCount = 8;
@@ -216,11 +240,13 @@ export class InstancedHexagons implements Scene {
         return `
         attribute vec4 aVertexPosition;
         attribute mat4 matrix;
+        attribute float showTex;
 
         varying float illumination;
         varying float elevation;
         varying float vr;
         varying vec2 uv;
+        varying float texMask;
 
         uniform vec2 mouseCoords;
         uniform mat4 screenMatrix;
@@ -240,6 +266,7 @@ export class InstancedHexagons implements Scene {
             illumination = dval;
             vr = length(aVertexPosition.xyz);
             uv = aVertexPosition.xy * 0.5 + 0.5;
+            texMask = showTex; 
         }
         `;
     }
@@ -256,13 +283,15 @@ export class InstancedHexagons implements Scene {
 
         varying vec2 uv;
 
+        varying float texMask;
+
         float map(float value, float inMin, float inMax, float outMin, float outMax) {
             return outMin + (outMax - outMin) * (value - inMin) / (inMax - inMin);
         }
 
         void main() {
 
-            vec4 t = texture2D(sampler, uv);
+            vec4 t = texture2D(sampler, uv) * texMask;
             vec4 i = vec4(vec3(elevation * illumination), 1.0);
             vec4 highlight = vec4(0.0, 1.0, 1.0, 1.0) * clamp(map(vr, 0.8, 1.0, 0.0, 1.0), 0.0, 1.0);
             vec4 albedo = t * i;
