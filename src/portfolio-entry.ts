@@ -67,7 +67,7 @@ export class PortfolioEntry extends HTMLElement {
         this.root.host.appendChild(roleSlot);
 
         for (const s of projects[id].stacks) {
-            console.log(projects[id].title, s, stacks[s])
+            //console.log(projects[id].title, s, stacks[s])
             const chip =  document.createElement('filter-chip')
             chip.setAttribute("name", s)
             chip.setAttribute("slot", "stacks");

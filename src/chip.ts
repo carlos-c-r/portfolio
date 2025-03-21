@@ -78,7 +78,7 @@ export class Chip extends HTMLElement {
     }
 
     private setDisabled(disabled: boolean) {
-        console.log(this, disabled);
+        //console.log(this, disabled);
         this.checkbox.disabled = disabled;
     }
 }

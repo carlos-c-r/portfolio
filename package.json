@@ -16,6 +16,7 @@
     "@types/glidejs__glide": "^3.6.6",
     "@types/node": "^22.13.5",
     "@types/slick-carousel": "^1.6.40",
+    "dompurify": "^3.2.4",
     "fast-glob": "^3.3.3",
     "rollup": "^4.34.8",
     "rollup-plugin-copy": "^3.5.0",
@@ -30,6 +31,7 @@
   "dependencies": {
     "@glidejs/glide": "^3.7.1",
     "embla-carousel": "^8.5.2",
+    "gl-matrix": "^3.4.3",
     "node-html-parser": "^7.0.1",
     "slick-carousel": "^1.8.1"
   }
