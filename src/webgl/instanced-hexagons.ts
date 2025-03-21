@@ -14,7 +14,7 @@ export class InstancedHexagons {
         this.buf = new Float32Array(nInstances * this.STRIDE);
         this.ts = Date.now();
 
-        this.rotationSpeeds = new Array(nInstances).map(x => Math.random() - 0.5);
+        this.rotationSpeeds = Array.from({ length: nInstances }, (x, i) => Math.random() - 0.5);
         this.matrices = new Array(nInstances);
 
         for (let i = 0; i < nInstances; ++i) {
@@ -27,6 +27,8 @@ export class InstancedHexagons {
             this.buf.set(m, i * this.STRIDE);
             this.matrices[i] = m;
         }
+
+        console.log(this.rotationSpeeds);
     }
 
     update() {
@@ -36,7 +38,7 @@ export class InstancedHexagons {
 
         for (let i = 0; i < this.nInstances; ++i) {
             const m = this.matrices[i];
-            mat4.rotateZ(m, m, deltat * this.rotationSpeeds[i]);
+            mat4.rotateZ(m, m, deltat * this.rotationSpeeds[i] * 0.01);
             this.buf.set(m, i * this.STRIDE);
         }
     }

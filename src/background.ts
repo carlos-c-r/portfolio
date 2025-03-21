@@ -1,30 +1,47 @@
 import { mat4, vec3 } from "gl-matrix";
-import { buildProgramInfo, initShaderProgram } from "./webgl/main.js";
+import { buildProgramInfo, initShaderProgram, resizeCanvasToDisplaySize } from "./webgl/main.js";
 import { InstancedHexagons } from "./webgl/instanced-hexagons.js";
 
 
 const vsSource = `
     attribute vec4 aVertexPosition;
     attribute mat4 matrix;
+    varying float illumination;
+    uniform vec2 mouseCoords;
     void main() {
       gl_Position = matrix * aVertexPosition;
-      //gl_Position = aVertexPosition;
+      illumination = 1.0 - distance(mouseCoords, gl_Position.xy);
     }
   `;
 
 const fsSource = `
-  void main() {
-    gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+precision mediump float;
+
+varying float illumination;
+
+void main() {
+  
+    gl_FragColor = vec4(illumination, illumination, illumination, 1.0);
   }
 `;
 
 
-const nInstances = 16;
+const nInstances = 64;
 
 
 const effect = new InstancedHexagons(nInstances);
 
+const mouseCoords = [0.0, 0.0];
+
 export function setup(canvas: HTMLCanvasElement) {
+
+    document.addEventListener('mousemove', ev => {
+        mouseCoords[0] = ev.clientX / canvas.clientWidth * 2.0 - 1.0;
+        mouseCoords[1] = -ev.clientY / canvas.clientHeight * 2.0 + 1.0;
+    })
+
+    resizeCanvasToDisplaySize(canvas);
+    window.addEventListener('resize', ev => resizeCanvasToDisplaySize(canvas));
 
     const gl = canvas.getContext("webgl");
 
@@ -56,16 +73,25 @@ export function setup(canvas: HTMLCanvasElement) {
     const matrixBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, matrixBuffer);
     // just allocate the buffer
-    gl.bufferData(gl.ARRAY_BUFFER, createInstanceDataBuffers(nInstances), gl.DYNAMIC_DRAW);
+    //gl.bufferData(gl.ARRAY_BUFFER, createInstanceDataBuffers(nInstances), gl.DYNAMIC_DRAW);
+    gl.bufferData(gl.ARRAY_BUFFER, effect.buf, gl.DYNAMIC_DRAW);
 
     const buffers = { position: positionBuffer, matrices: matrixBuffer };
 
     render(gl, ext, programInfo, buffers);
+
+
 }
 
 
 
 export function render(gl: WebGLRenderingContext, ext: any, programInfo: any, buffers: any) {
+
+    
+
+    effect.update();
+
+    gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
     gl.clearColor(1.0, 0.0, 0.0, 1.0); // Clear to black, fully opaque
     gl.clearDepth(1.0); // Clear everything
@@ -77,6 +103,9 @@ export function render(gl: WebGLRenderingContext, ext: any, programInfo: any, bu
 
     // Tell WebGL to use our program when drawing
     gl.useProgram(programInfo.program);
+
+
+    gl.uniform2fv(programInfo.uniformLocations['mouseCoords'], mouseCoords);
 
     // Tell WebGL how to pull out the positions from the position
     // buffer into the vertexPosition attribute.
@@ -99,10 +128,15 @@ export function render(gl: WebGLRenderingContext, ext: any, programInfo: any, bu
 
 
     gl.bindBuffer(gl.ARRAY_BUFFER, buffers.matrices);
+    gl.bufferSubData(gl.ARRAY_BUFFER, 0, effect.buf);
+
+    //console.log(effect.buf.slice(0, 16));
+
     const bytesPerMatrix = 4 * 16;
     for (let i = 0; i < 4; ++i) {
         const loc = programInfo.attribLocations['matrix'] + i;
         gl.enableVertexAttribArray(loc);
+
         // note the stride and offset
         const offset = i * 16;  // 4 floats per row, 4 bytes per float
         gl.vertexAttribPointer(
@@ -160,27 +194,5 @@ export function createHexagonMesh() {
     return arr;
 }
 
-function createInstanceDataBuffers(n: number) {
 
-    const stride = (
-        16 + // MVP matrix
-        0
-    );
-
-    const buf = new Float32Array(n * stride);
-
-    for (let i = 0; i < n; ++i) {
-        const m = mat4.create();
-        mat4.identity(m);
-        const s = Math.random() * 0.1;
-        mat4.translate(m, m, [Math.random() * 2 - 1, Math.random() * 2 - 1, 0]);
-        mat4.scale(m, m, [s, s, s]);
-
-        buf.set(m, i * stride);
-    }
-
-    console.log(buf);
-
-    return buf;
-}
 
