@@ -6,8 +6,9 @@ import { Scene } from "./scene.js";
 
 
 import textures from "../textures.js";
+import { ImageDataType } from "@loaders.gl/images";
 
-const cog = textures['cog'];
+
 
 
 const uniform = random.uniform();
@@ -35,9 +36,9 @@ export class InstancedHexagons implements Scene {
     ext: any;
 
     texture: WebGLTexture = -1;
-    textureData = cog.data;
-    texWidth: number = cog.width;
-    texHeight: number = cog.height;
+    textureData: any;
+    texWidth: number = 0;
+    texHeight: number = 0;
 
 
     constructor(private gl: WebGLRenderingContext, private nInstances: number) {
@@ -67,17 +68,18 @@ export class InstancedHexagons implements Scene {
         })
 
         //@ts-ignore
-        document.addEventListener('set-icon', (ev: any) => {
+        textures.on('loaded', (t: ImageDataType) => {
             if (!this.gl.isTexture(this.texture)) return;
-            const icon = ev.detail;
-            if (textures[icon]) {
-                this.texWidth = textures[icon].width;
-                this.texHeight = textures[icon].height;
-                this.textureData = textures[icon].data;
 
-                gl.bindTexture(gl.TEXTURE_2D, this.texture);
-                gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, this.texWidth, this.texHeight, 0, gl.RGBA, gl.UNSIGNED_BYTE, this.textureData);
-            }
+
+
+            this.texWidth = t.width;
+            this.texHeight = t.height;
+            this.textureData = t.data;
+
+            gl.bindTexture(gl.TEXTURE_2D, this.texture);
+            gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, this.texWidth, this.texHeight, 0, gl.RGBA, gl.UNSIGNED_BYTE, this.textureData);
+
         });
 
         this.buf = new Float32Array(nInstances * this.STRIDE);
@@ -86,7 +88,7 @@ export class InstancedHexagons implements Scene {
         this.rotationSpeeds = Array.from({ length: nInstances }, (x, i) => Math.random() - 0.5);
         this.matrices = new Array(nInstances);
 
-        
+
         const grid = createHexGrid(nInstances, this.HEX_RADIUS, 1.0);
 
 
@@ -96,11 +98,11 @@ export class InstancedHexagons implements Scene {
             const baseScale = this.HEX_RADIUS * 2.0;
             const s = baseScale;// + Math.random() * baseScale * 0.2;// - baseScale * 0.15;
             const zoffset = Math.random();
-            
+
             //const tr = randomPosition(0, 0);
-            const tr = [ grid[i][0] * 2.0 - 1.0, -grid[i][1] * 2.0 + 1.0 ]; 
+            const tr = [grid[i][0] * 2.0 - 1.0, -grid[i][1] * 2.0 + 1.0];
             //console.log(tr);
-            
+
             mat4.translate(m, m, [tr[0], tr[1], -zoffset]);
 
             const sm = zoffset * s * 0.2;
@@ -111,7 +113,7 @@ export class InstancedHexagons implements Scene {
             this.matrices[i] = m;
 
             const showTex = uniform() < 0.1 ? 1.0 : 0.0;
-            this.buf.set([ showTex ], i * this.STRIDE + 16);
+            this.buf.set([showTex], i * this.STRIDE + 16);
         }
 
         const vsSource = this.vs();
@@ -137,7 +139,7 @@ export class InstancedHexagons implements Scene {
         this.texture = gl.createTexture()!;
         console.log(this.texture)
         gl.bindTexture(gl.TEXTURE_2D, this.texture);
-        
+
 
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
@@ -196,7 +198,7 @@ export class InstancedHexagons implements Scene {
         this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.buffers.matrices);
         this.gl.bufferSubData(this.gl.ARRAY_BUFFER, 0, this.buf);
 
-        
+
         //mat4 takes 4 attribute locations
 
         for (let i = 0; i < 4; ++i) {
@@ -345,10 +347,11 @@ function createHexGrid(items: number, r: number, width: number) {
         let i = ~~(k / perRow);
         let j = k % perRow;
 
-        result.push([ j * gw, (i * 2 - (j%2)) * gh ]);
+        result.push([j * gw, (i * 2 - (j % 2)) * gh]);
     }
 
     return result;
 }
 
 //console.log(createHexGrid(100, 10, 100));
+

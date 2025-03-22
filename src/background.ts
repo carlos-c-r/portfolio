@@ -1,3 +1,4 @@
+import textures from "./textures.js";
 import { InstancedHexagons } from "./webgl/instanced-hexagons.js";
 
 
@@ -11,6 +12,8 @@ export function setup(canvas: HTMLCanvasElement) {
 
 
     const effect = new InstancedHexagons(gl, 512);
+
+    textures.load('textures/cog.png');
     
 
     function render() {

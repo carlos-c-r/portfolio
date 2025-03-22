@@ -1,26 +1,34 @@
 import {ImageDataType, ImageLoader} from '@loaders.gl/images';
 import {load} from '@loaders.gl/core';
 
-
-const sources = ["cog.png"];
-
-const textureData = await Promise.all(sources.map(x => load(`textures/${x}`, ImageLoader, { image: {type: 'data'} }) as Promise<ImageDataType>));
-
-const textures = textureData.reduce((acc, x, i) => (acc[removeExtension(sources[i])] = x, acc), <{ [key: string]: ImageDataType }>{});
-
-console.log(textures);
-
-export default textures;
+export class EventEmitter {
 
 
-function removeExtension(s: string) {
-    const idx = s.lastIndexOf('.');
-    if (idx < 0) return s;
-    return s.substring(0, idx);
+    listeners: { [key: string]: ((...args: any[]) => void)[] } = {};
+
+    on(eventName: string, listener: (...args: any[]) => void) {
+        this.listeners[eventName] ??= [];
+        this.listeners[eventName].push(listener);
+    }
+
+    emit(eventName: string, ...args: any[]) {
+        for (const l of this.listeners[eventName] || []) l(...args);
+    }
 }
 
-document.addEventListener('keyup', ev => {
-    if (ev.key == 'a') {
-        document.dispatchEvent(new CustomEvent('set-icon', { detail: 'cog' }));
+export class TextureLoader extends EventEmitter {
+
+    private cache: { [key: string]: ImageDataType } = {};
+
+    async load(url: string, requestId?: any) {
+        if (this.cache[url]) return Promise.resolve(this.cache[url]);
+        return (load(url, ImageLoader, { image: {type: 'data'} }) as Promise<ImageDataType>).then(x => {
+            this.cache[url] = x;
+            this.emit('loaded', x, requestId);
+            console.log(x);
+            return x;
+        })
     }
-})
+}
+
+export default new TextureLoader();

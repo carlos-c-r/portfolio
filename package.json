@@ -34,6 +34,7 @@
     "@loaders.gl/images": "^4.3.3",
     "@loaders.gl/polyfills": "^4.3.3",
     "embla-carousel": "^8.5.2",
+    "events": "^3.3.0",
     "gl-matrix": "^3.4.3",
     "node-html-parser": "^7.0.1",
     "random": "^5.3.0",

@@ -1,3 +1,5 @@
+import html from './templates/portfolio-entry.html';
+
 import projectsData from './data/projects.json' with { type: "json" };
 import stacksData from './data/stacks.json' with { type: "json" };
 import rolesData from './data/roles.json' with { type: "json" };
@@ -15,6 +17,14 @@ interface PortfolioEntryData {
     references: string[],
 }
 
+const TEMPLATE_ID = "portfolio-entry";
+const TAG_NAME = "portfolio-entry";
+
+const template = document.createElement('template');
+document.body.append(template);
+template.id = TEMPLATE_ID;
+template.innerHTML = html;
+
 const projects = projectsData as unknown as { [key: string]: PortfolioEntryData };
 const stacks = stacksData as unknown as { [key: string]: string };
 const roles = rolesData as unknown as { [key: string]: string };
@@ -28,10 +38,8 @@ export class PortfolioEntry extends HTMLElement {
 
         super();
 
-        let template = document.getElementById("portfolio-entry") as HTMLTemplateElement;
-        let templateContent = template.content;
-        let content = templateContent.cloneNode(true);
-
+        let template = document.getElementById(TEMPLATE_ID)! as HTMLTemplateElement;
+        let content = template.content.cloneNode(true);
         this.content = content;
 
         const shadowRoot = this.attachShadow({ mode: "open" });
@@ -112,10 +120,7 @@ export class PortfolioEntry extends HTMLElement {
 
             refContainer.appendChild(elm);
         }
-
-
-        this.root.querySelector('.background').style.backgroundImage = `url("portfolio/${id}/bg.png")`;
     }
 }
 
-window.customElements.define("portfolio-entry", PortfolioEntry);
+window.customElements.define(TAG_NAME, PortfolioEntry);
