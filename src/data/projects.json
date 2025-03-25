@@ -108,8 +108,8 @@
         ]
     },
     "bc-one": {
-        "title": "Redbull BC One 2017, Nagoya",
-        "client": "2017",
+        "title": "Redbull BC One 2016, Nagoya",
+        "client": "2016",
         "year": "Red Bull Group",
         "stacks": [
             "JAVA",
@@ -123,9 +123,10 @@
             "SETUP",
             "LIVE_HOST"
         ],
-        "description": "We were invited by Red Bull to the BC One 2017 breakdancing world cup at Nagoya, Japan, to set up and operate several custom immersive stands where people could paint in VR in a custom tiltbrush scenario with a 3D sculpture of the world cup, and have photos of them taken while doing so, getting mixed into the 3D space, and sent to them. Partners Paraddax brought their holographic technology to make the experience really stand out too!.",
+        "description": "We were invited by Red Bull to the BC One 2016 breakdancing world cup at Nagoya, Japan, to set up and operate several custom immersive stands where people could paint in VR in a custom tiltbrush scenario with a 3D sculpture of the world cup, and have photos of them taken while doing so, getting mixed into the 3D space, and sent to them. Partners Paraddax brought their holographic technology to make the experience really stand out too!.",
         "references": [
-            "https://visyon360.com/project/redbull"
+            "https://visyon360.com/project/redbull",
+            "https://github.com/carlos-c-r/redbull-bcone-2016"
         ],
         "challenges": [
             "The biggest and most obvious. We had to attend two venues, and we only had one translator",
@@ -161,7 +162,7 @@
             "https://www.youtube.com/watch?v=AcXfpihOAig"
         ],
         "challenges": [
-            "Dealing with the variability of human anatomy was the biggest challenge. I had to compensate for any shortcomings of the 3d scan too",
+            "Dealing with the variability of human anatomy was the biggest challenge. I had to compensate for any shortcomings of the 3d scan too.",
             "There was also the fact that I had absolutely no clue about tailoring and measurements."
         ],
         "solutions": [
@@ -199,7 +200,7 @@
     },
     "modmol": {
         "title": "Modmol",
-        "client": "2019",
+        "client": "2020",
         "year": "University of Barcelona",
         "stacks": [
             "CS",
@@ -211,9 +212,10 @@
             "PROGRAMMING",
             "RENDERING"
         ],
-        "description": "This mobile AR application would let you build or visualize 3d orgnaic and inorganic molecules in augmented reality.",
+        "description": "This mobile AR application would let you build or visualize 3d organic and inorganic molecules in augmented reality.",
         "references": [
-            "https://play.google.com/store/apps/details?id=edu.ub.iqtc.modmol&hl=es_419&pli=1"
+            "https://play.google.com/store/apps/details?id=edu.ub.iqtc.modmol&hl=es_419&pli=1",
+            "https://github.com/carlos-c-r/modmol/tree/dev"
         ],
         "challenges": [
             "The main challenge was of course correctly handling the required domain knowledge for such an application, as the bonding rules for covalent bonds are not exactly systematic and there are a lot of corner cases."
@@ -242,7 +244,8 @@
         ],
         "description": "A commissioned project to develop an interactive ping pong table with bespoke games through scanning and detection technologies.",
         "references": [
-            "https://play.google.com/store/apps/details?id=edu.ub.iqtc.modmol&hl=es_419&pli=1"
+            "https://www.youtube.com/watch?v=AYXeZ73VuBE&t=132s",
+            "https://github.com/carlos-c-r/bgw-pingpong"
         ],
         "challenges": [
             "This project was an absolute challenge",
@@ -302,7 +305,7 @@
             "Solving certain issues with Unity's dispatcher in mobile platforms regarding async request handling."
         ],
         "solutions": [
-            "Development of a bespoke C# binding library (included in this portfolio) to immediately adapt to changes in (by the quite unstable) required libraries.",
+            "Development of a bespoke C# binding library (included in this portfolio) to immediately adapt to changes in (by then quite unstable) required libraries.",
             "Reverse engineering of Unity's dispatcher to manually implement a fix for the broken behaviours."
         ]
     },
@@ -319,7 +322,7 @@
         "roles": [
             "PROGRAMMING"
         ],
-        "description": "This was a fully fledged SDK for building interactive VR experiences for the only platforms allowing mobile VR back in the day, that being Google Cardboard, and eventually, before discontinuation, Samsung GearVR and Google Daydream.",
+        "description": "Fully fledged SDK for building interactive VR experiences for the only platforms allowing mobile VR back in the day, that being, Google Cardboard, and eventually, before discontinuation, Samsung GearVR and Google Daydream.",
         "references": [
             "https://github.com/carlos-c-r/vrsdk"
         ],
@@ -328,7 +331,8 @@
         ],
         "solutions": [
             "Adapting, as the sole Android developer back then, to the ever changing requirements in an extensible way to keep the SDK usable.",
-            "Handling the idiosyncrasies of each supported platform at the time, was tricky, as there was no open standard like OpenXR today."
+            "Handling the idiosyncrasies of each supported platform at the time, was tricky, as there was no open standard like OpenXR today.",
+            "A clever solution to handle user interfaces, allowing Android regular views to be rendered and interacted with in the VR space, allowing for existing apps or UIs to easily recycle to VR."
         ]
     },
     "haptics": {
@@ -357,7 +361,10 @@
             "https://github.com/carlos-c-r/telefonica-mwc2024-supervisor"
         ],
         "challenges": [
-            "This project was a long string of issues coming from the interoperation of several completely different stacks, such as Cloud XR, Unreal Engine, Quest OS, and the bHaptics SDK."
+            "CloudXR was notoriously difficult to work with, with limited documentation, and exotic undocumented bugs in their internal libraries.",
+            "The bHaptics SDK used for the haptic vests was also notoriously difficult to work with, with out of date documentation and examples that wouldn't work.",
+            "Steam also proved to be a challenge, even when using their standalone SteamVR binary, as it was especially difficult to control it in a completely non-interactive way.",
+            "Having to bridge the remote-rendering nodes acting as source for the haptic events, to the local receiver nodes controlling the haptic vests acting as receivers."
         ],
         "solutions": [
             "Reverse engineering certain parts of Steam and SteamVR to ensure correct management of them and the CloudXR plugin in a nonsupervised way.",
@@ -379,7 +386,7 @@
             "PROGRAMMING",
             "RENDERING"
         ],
-        "description": "World's first, to my knowledge, VR remote conferencing software",
+        "description": "World's first, to my knowledge, VR remote conferencing software, deployed on a Netherlands' hospital, for long-term patients to remain connected to their loved ones.",
         "references": [],
         "challenges": [
             "This project was a long string of issues coming from the interoperation of several completely different stacks, such as Cloud XR, Unreal Engine, Quest OS, and the bHaptics SDK."
@@ -407,9 +414,15 @@
             "SYSADMIN"
         ],
         "description": "This is a set of github actions, combined with machine image provisioning, to provide a fully functional Laravel stack on a single click. It was motivated through the client's usual need of deploying Laravel stacks for multitude of projects.",
-        "references": [],
-        "challenges": [],
-        "solutions": []
+        "references": [
+            "https://github.com/carlos-c-r/laravel-stack"
+        ],
+        "challenges": [
+            "Dealing with building php 7, and all additional required modules, on Debian 12, along with other really outdated dependencies."
+        ],
+        "solutions": [
+            "Custom system image creation with all prerequisites."
+        ]
     },
     "nest-generic-controller": {
         "title": "Nest JS Generic Controller package.",
@@ -422,14 +435,21 @@
             "PROGRAMMING"
         ],
         "description": "This is a Nest JS package to enable creating extensible CRUD controllers for any entity with just one line of code. It was motivated by the client's platform requiring multitude of entity types with common CRUD operations. The repo explores the more metaprogramming side of TS's compilation and transpilation process, as well as an in-depth reverse engineering of the mechanisms of Nest JS and TypeORM.",
-        "references": [],
-        "challenges": [],
-        "solutions": []
+        "references": [
+            "https://github.com/carlos-c-r/nestjs-controller"
+        ],
+        "challenges": [
+            "It was my first time delving into Typescript's internals, including the metadata and tyè reification mechanisms.",
+            "Having to account for quickly varying requisites until a satisfactory baseline was found."
+        ],
+        "solutions": [
+            "Custom metadata leveraging system, which, paired with dynamically defined classes, allow for generic controllers."
+        ]
     },
     "labeling": {
         "title": "Twitter Labeling Tool",
-        "client": "2023-24",
-        "year": "Metacampus SLU",
+        "client": "Metacampus SLU",
+        "year": "2023-24",
         "stacks": [
             "TS",
             "HTML",
@@ -447,8 +467,39 @@
             "TECH_DIRECTION"
         ],
         "description": "This tool is part of a larger suite dedicated to build Twitter fed classifiers. It enables for operators to label incoming tweets to train the classifiers.",
-        "references": [],
-        "challenges": [],
-        "solutions": []
+        "references": [
+            "https://github.com/carlos-c-r/sensai"
+        ],
+        "challenges": [
+            "Ensuring ease of use for both new and experienced operators, for maximum throughput efficiency.",
+            "Setting up the system to receive the labelings, save them, keep them traceable, and feed them to the classifier training nodes."
+        ],
+        "solutions": [
+            "A custom architecture was deployed to ensure data persistency, traceability and accessibility."
+        ]
+    },
+    "dowjonesar": {
+        "title": "WSJ DowJones AR plugin",
+        "client": "Wall Street Journal",
+        "year": "2015-16",
+        "stacks": [
+            "ANDROID",
+            "JAVA",
+            "OGL"
+        ],
+        "roles": [
+            "PROGRAMMING",
+            "RENDERING"
+        ],
+        "description": "AR library for the main Wall Street Journal app, visualizing changes to stock market in AR.",
+        "references": [ "https://github.com/carlos-c-r/dowjones-ar" ],
+        "challenges": [
+            "One of the first AR apps in the world, without any existing engine plugins or similar.",
+            "We had to integrate into an existing app, which conditioned the build process and other requirements."
+        ],
+        "solutions": [
+            "Like many others at that time, I had to resort to low-level OpenGL programming to handle the then Android-only ARCore lib.",
+            "Had to play tricks with the by-then immature gradle Android Plugin to get it to build the way it was asked from us."
+        ]
     }
 }
