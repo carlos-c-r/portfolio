@@ -157,7 +157,7 @@
             "RENDERING",
             "RDI"
         ],
-        "description": "This project involved a 3d body scan platform, which would be sent to a software that would take your measurements automatically in order to show you your best fit.",
+        "description": "This project involved a 3d body scan platform, which would be sent to our software that would take your measurements automatically in order to show you your best fit.",
         "references": [
             "https://www.youtube.com/watch?v=AcXfpihOAig"
         ],
@@ -166,7 +166,7 @@
             "There was also the fact that I had absolutely no clue about tailoring and measurements."
         ],
         "solutions": [
-            "Accelerated crash course on tailoring and measurement (thanks, Mom!)",
+            "Accelerated crash course on tailoring and measurement (thanks, Mom!). Expressway to domain knowledge.",
             "Implementation of a PCA analysis routine to ensure alignment of scanned models (this was a shortcoming of the scanner).",
             "Implementation of the analysis tool in C++ that would obtain the reference points and measures through OpenCV.",
             "Developing the viewer in Unity that would display said points and measurements interactively."
