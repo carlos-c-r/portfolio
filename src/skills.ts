@@ -49,6 +49,16 @@ function createStacks() {
             elm.addEventListener('click', ev => lol(label.textContent || '', info.start, info.end, info.rating));
 
             parent?.appendChild(elm);
+
+            const tml = document.createElement('div');
+            tml.classList.add('timelined');
+            tml.setAttribute('timeline-start', '1995');
+            tml.setAttribute('timeline-end', '2025');
+            tml.setAttribute('from', info.start.toString());
+            tml.setAttribute('to', info.end.toString());
+
+            parent?.appendChild(tml);
+
         }
 
     }

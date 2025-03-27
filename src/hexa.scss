@@ -1,93 +1,141 @@
-.hexa-container {
+$block: '.hex-grid';
 
+@mixin grid-item($amount) {
+    @for $i from 1 through $amount {
+        &:nth-of-type(#{$amount}n + #{$i}) {
+            grid-column: #{$i + $i - 1} / span 3;
+
+            @if $i % 2==0 {
+                grid-row: calc(var(--counter) + var(--counter) - 1) / span 2;
+            }
+        }
+    }
+
+    @for $i from 1 through 20 {
+        &:nth-of-type(n + #{$i * $amount + 1}) {
+            --counter: #{$i + 1};
+        }
+    }
+}
+
+#{$block} {
     display: flex;
-
-    /* size  */
-    --s: 100px;
-    /* margin */
-    --m: 4px;
-
-    --f: calc(var(--s) * 1.732 + 4 * var(--m) - 1px);
-
-}
-
-#hexa-bg {
-    position: absolute;
-    /* z-index: -1; */
-
-    // For extra size and have partials
-    width: calc(100% + (var(--s) + var(--m)) * 1.5);
-    height: calc(100% + (var(--s) + var(--m)) * 1.5);
-    min-height: 100%;
-    left: calc((var(--s) + var(--m)) * -0.5);
-    top: calc((var(--s) + var(--m)) * -0.5);
-
-    // width: 100%;
-    // height: 100%;
-    // min-height: 100%;
-    // left: 0;
-    // top: 0;
-
-    /* background-color: linear-gradient(black, #00000000); */
-    background: black;
-}
-
-.hexa-grid {
-    font-size: 0;
-    /* disable white space between inline block element */
-}
-
-.hexa-grid div {
-    width: var(--s);
-    margin: var(--m);
-    height: calc(var(--s) * 1.1547);
-    display: inline-flex;
-    font-size: initial;
-    clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
-    margin-bottom: calc(var(--m) - var(--s) * 0.2885);
-    overflow: hidden;
-    align-items: center;
-    text-align: center;
     justify-content: center;
+
+    &__list {
+        --amount: 5;
+        position: relative;
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        display: grid;
+        grid-template-columns: repeat(var(--amount), 1fr 2fr) 1fr;
+        grid-gap: 2.5rem 5rem;
+    }
+
+    &__item {
+        position: relative;
+        grid-column: 1 / span 3;
+        grid-row: calc(var(--counter) + var(--counter)) / span 2;
+        filter: drop-shadow(0 0 10px rgba(#444, 0.08));
+        height: 0;
+        padding-bottom: 90%;
+    }
+
+    &__content {
+        box-sizing: border-box;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        font-size: 1.125rem;
+        color: #111111;
+        background-color: rgb(73, 66, 66);
+        clip-path: polygon(75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%, 25% 0);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        // padding: 2rem 25%;
+        text-decoration: none;
+        text-align: center;
+        transition: transform 0.24s ease-out;
+
+        overflow: visible;
+            
+    }
+
+    &__content:hover {
+        // background: red;
+        transform: scale(1.2);
+
+        --hexa-color: cyan;
+    }
+
+
 }
 
-.hexa-grid::before {
-    content: "";
-    width: calc(var(--s) / 2 + var(--m));
-    float: left;
-    height: 120%;
-    shape-outside: repeating-linear-gradient(#0000 0 calc(var(--f) - 3px), #000 0 var(--f));
+@media screen and (min-width: 1440px) {
+    #{$block} {
+        &__list {
+            --amount: 5;
+            --counter: 1;
+        }
+
+        &__item {
+            @include grid-item(5);
+        }
+    }
+}
+
+@media screen and (min-width: 1120px) and (max-width: 1439px) {
+    #{$block} {
+        &__list {
+            --amount: 4;
+            --counter: 1;
+            grid-gap: 1.5rem 3rem;
+        }
+
+        &__item {
+            @include grid-item(4);
+        }
+    }
+}
+
+@media screen and (min-width: 840px) and (max-width: 1119px) {
+    #{$block} {
+        &__list {
+            --amount: 3;
+            --counter: 1;
+            grid-gap: 1.5rem 3rem;
+        }
+
+        &__item {
+            @include grid-item(3);
+        }
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width: 839px) {
+    #{$block} {
+        &__list {
+            --amount: 2;
+            --counter: 1;
+            grid-gap: 1.5rem 3rem;
+        }
+
+        &__item {
+            @include grid-item(2);
+        }
+    }
+}
+
+@media screen and (max-width: 479px) {
+    #{$block} {
+        &__list {
+            --amount: 1;
+            grid-gap: 1.5rem 3rem;
+        }
+    }
 }
 
 
-
-
-
-.hexa-anim-1 {
-    animation: pulse 2s infinite alternate;
-    animation: spin  2s infinite;
-}
-
-@keyframes pulse {
-from {
-    background-size:100% 100%;
-  }
-  to {
-    background-size:150% 150%;
-  }
-}
-
-@keyframes spin { 
-    100% { 
-        -webkit-transform: rotate(360deg); 
-        transform:rotate(360deg); 
-    } 
-}
-
-.hexa-grid div {
-    background: radial-gradient(transparent 0%, transparent 55%, cyan 100%);
-    background-position: center;
-
-    
-    
-}

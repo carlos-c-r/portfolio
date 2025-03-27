@@ -366,3 +366,121 @@ $tab-wrap-border-radius: 6px;
         border-radius: $tab-wrap-border-radius;
     }
 }
+
+#portfolio-entries {
+    padding: 2em;
+
+    ul {
+        margin: auto;
+
+        li:has(div.hex-border:hover) {
+            z-index: 100 !important;
+        }
+
+        div.hex-grid__content {
+
+            
+            background-size: cover;
+            z-index: 0;
+
+            &:has(.hex-border:hover) {
+                z-index: 10;
+            }
+            
+        }
+
+        .hex-border {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+
+            background: 
+            linear-gradient(180deg, var(--hexa-color) 2%, transparent 4%), 
+            linear-gradient(  0deg, var(--hexa-color) 2%, transparent 4%),
+            linear-gradient( 60deg, var(--hexa-color) 18%, transparent 20%),
+            linear-gradient(120deg, var(--hexa-color) 18%, transparent 20%),
+            linear-gradient(240deg, var(--hexa-color) 18%, transparent 20%),
+            linear-gradient(300deg, var(--hexa-color) 18%, transparent 20%)
+            ;
+        
+            --hexa-color: rgb(61, 52, 52);
+
+            &:hover {
+                --hexa-color: cyan;
+                z-index: 9999;   
+            }
+
+            z-index: 1;
+        }
+
+        .hex-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+
+            filter: grayscale(70%);
+            transition: filter 0.25s linear;
+
+            &:has(~ .hex-border:hover) {
+                filter: none;
+            }
+        }
+
+        p {
+            color: var(--accent-fg-color);
+            background: 
+            linear-gradient(  0deg, transparent, var(--hex-text-bg) 0.5em, var(--hex-text-bg) 50%, transparent 50%),
+            linear-gradient(180deg, transparent, var(--hex-text-bg) 0.5em, var(--hex-text-bg) 50%, transparent 50%)
+            ;
+            display: block;
+            width: 100%;
+            padding: 1em 2em;
+
+            box-sizing: border-box;
+
+            --hex-text-bg: #333333CC;
+        }
+    }
+}
+
+
+#portfolio-modal {
+    height: 100vh;
+    width: 100vw;
+    background-color: #333333CC;
+    backdrop-filter: blur(10px);
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    padding: 3em;
+
+    box-sizing: border-box;
+
+    &.modal-hidden {
+        display: none;
+    }
+
+    .modal-content {
+        max-width: 900px;
+        margin: auto;
+    }
+
+    div.modal-close {
+        
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        right: 1em;
+        top: 1em;
+    }
+
+}

@@ -21,7 +21,10 @@ export class TextureLoader extends EventEmitter {
     private cache: { [key: string]: ImageDataType } = {};
 
     async load(url: string, requestId?: any) {
-        if (this.cache[url]) return Promise.resolve(this.cache[url]);
+        if (this.cache[url]) {
+            this.emit('loaded', this.cache[url], requestId);
+            return Promise.resolve(this.cache[url]);
+        }
         return (load(url, ImageLoader, { image: {type: 'data'} }) as Promise<ImageDataType>).then(x => {
             this.cache[url] = x;
             this.emit('loaded', x, requestId);

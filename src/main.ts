@@ -12,3 +12,5 @@ import { setup } from './background.js'
 // }
 
 setup(document.querySelector('#background')!);
+
+document.querySelector('.modal-close')?.addEventListener('mouseup', ev => document.querySelector('#portfolio-modal')?.classList.add('modal-hidden'));

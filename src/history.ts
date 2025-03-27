@@ -13,5 +13,5 @@ for (const elm of document.querySelectorAll('.timelined') as Iterable<HTMLElemen
 
     //elm.style.backgroundColor = 'red';
 
-    console.log(elm, begin, end, from, to, sp, ep);
+    //console.log(elm, begin, end, from, to, sp, ep);
 }

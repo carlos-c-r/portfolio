@@ -33,7 +33,7 @@ export class InstancedHexagons implements Scene {
 
     canvas: HTMLCanvasElement;
 
-    ext: any;
+    //ext: any;
 
     texture: WebGLTexture = -1;
     textureData: any;
@@ -41,10 +41,10 @@ export class InstancedHexagons implements Scene {
     texHeight: number = 0;
 
 
-    constructor(private gl: WebGLRenderingContext, private nInstances: number) {
+    constructor(private gl: WebGL2RenderingContext, private nInstances: number) {
 
-        this.ext = gl.getExtension('ANGLE_instanced_arrays');
-        if (!this.ext) throw new Error('need ANGLE_instanced_arrays');
+        //this.ext = gl.getExtension('ANGLE_instanced_arrays');
+        //if (!this.ext) throw new Error('need ANGLE_instanced_arrays');
 
         this.screenMatrix = mat4.create();
         mat4.identity(this.screenMatrix);
@@ -69,16 +69,18 @@ export class InstancedHexagons implements Scene {
 
         //@ts-ignore
         textures.on('loaded', (t: ImageDataType) => {
+
             if (!this.gl.isTexture(this.texture)) return;
-
-
 
             this.texWidth = t.width;
             this.texHeight = t.height;
             this.textureData = t.data;
 
+
             gl.bindTexture(gl.TEXTURE_2D, this.texture);
             gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, this.texWidth, this.texHeight, 0, gl.RGBA, gl.UNSIGNED_BYTE, this.textureData);
+
+            console.log(this.texture);
 
         });
 
@@ -137,12 +139,16 @@ export class InstancedHexagons implements Scene {
 
 
         this.texture = gl.createTexture()!;
-        console.log(this.texture)
         gl.bindTexture(gl.TEXTURE_2D, this.texture);
 
 
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+
+        // Prevents s-coordinate wrapping (repeating).
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        // Prevents t-coordinate wrapping (repeating).
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
 
         //gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, this.texWidth, this.texHeight, 0, gl.RGBA, gl.UNSIGNED_BYTE, this.textureData);
     }
@@ -216,16 +222,19 @@ export class InstancedHexagons implements Scene {
             );
 
             // this line says this attribute only changes for each 1 instance
-            this.ext.vertexAttribDivisorANGLE(loc, 1);
+            //this.ext.vertexAttribDivisorANGLE(loc, 1);
+            this.gl.vertexAttribDivisor(loc, 1);
         }
 
         this.gl.enableVertexAttribArray(this.programInfo.attribLocations['showTex']);
         this.gl.vertexAttribPointer(this.programInfo.attribLocations['showTex'], 1, this.gl.FLOAT, false, this.STRIDE * 4, 64);
-        this.ext.vertexAttribDivisorANGLE(this.programInfo.attribLocations['showTex'], 1);
+        //this.ext.vertexAttribDivisorANGLE(this.programInfo.attribLocations['showTex'], 1);
+        this.gl.vertexAttribDivisor(this.programInfo.attribLocations['showTex'], 1);
 
         {
             const vertexCount = 8;
-            this.ext.drawArraysInstancedANGLE(
+            //this.ext.drawArraysInstancedANGLE(
+            this.gl.drawArraysInstanced(
                 this.gl.TRIANGLE_FAN,
                 0,             // offset
                 vertexCount,   // num vertices per instance

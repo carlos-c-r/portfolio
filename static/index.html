@@ -136,7 +136,7 @@
                     <li>Other small consultation jobs or collaborations.</li>
                 </ul>
 
-                
+
             </div>
         </div>
         <label class="nav" for="history">
@@ -229,11 +229,13 @@
                     <!--populated from js-->
                 </div>
 
-                <div class="hexa-container">
-                <div id="portfolio-entries" class="hexa-grid">
-                    <!--populated from js-->
+                <div id="portfolio-entries">
+                    <ul class="hex-grid__list">
+                        <!--populated from js-->
+                    </ul>
                 </div>
-                </div>
+
+
             </div>
         </div>
         <label class="nav" for="portfolio">
@@ -243,6 +245,13 @@
             </span>
 
         </label>
+
+
+    </div>
+
+    <div id="portfolio-modal" class="modal-hidden">
+        <div class="modal-close">X</div>
+        <portfolio-entry id="pe" name="endwi" class="modal-content"></portfolio-entry>
     </div>
 
     <script type="module" src="main.js"></script>
